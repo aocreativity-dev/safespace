@@ -33,6 +33,17 @@ const copy = {
     video: "When Online Harassment Happens",
     videoText: "A learning series about recognising online harassment and considering safer next steps.",
     watch: "Explore the video library",
+    videoLibraryTitle: "Watch the learning videos",
+    videoLibraryIntro: "These videos are part of the Safe Space learning collection. Watch them here, then explore related guides.",
+    fullVideoLabel: "Full video",
+    shortVideoLabel: "Short video",
+    fullVideoDescription: "Watch the full-length video in the player. You can also open it on YouTube.",
+    shortVideoDescription: "Watch this short-form video in the player. You can also open it on YouTube.",
+    openYouTube: "Open on YouTube",
+    relatedGuides: "Explore related guides",
+    captionsNote: "Use the YouTube player controls to enable captions when they are available. Transcripts can be added after they are prepared and reviewed.",
+    videoNumberOne: "Video 1",
+    videoNumberTwo: "Video 2",
     organisationsTitle: "Helping communities build safer digital spaces",
     organisationsText: "Practical materials for NGOs, educators and community facilitators: workshop plans, discussion guides and awareness resources.",
     toolkit: "Explore organisation resources",
@@ -96,6 +107,17 @@ const copy = {
     video: "Quand le harcèlement en ligne survient",
     videoText: "Une série éducative pour reconnaître le harcèlement en ligne et envisager des démarches plus sûres.",
     watch: "Explorer la vidéothèque",
+    videoLibraryTitle: "Regarder les vidéos pédagogiques",
+    videoLibraryIntro: "Ces vidéos font partie de la collection pédagogique de Safe Space. Regardez-les ici, puis découvrez les guides associés.",
+    fullVideoLabel: "Vidéo complète",
+    shortVideoLabel: "Vidéo courte",
+    fullVideoDescription: "Regardez la vidéo complète dans le lecteur. Vous pouvez également l’ouvrir sur YouTube.",
+    shortVideoDescription: "Regardez cette vidéo courte dans le lecteur. Vous pouvez également l’ouvrir sur YouTube.",
+    openYouTube: "Ouvrir sur YouTube",
+    relatedGuides: "Découvrir les guides associés",
+    captionsNote: "Utilisez les commandes du lecteur YouTube pour activer les sous-titres lorsqu’ils sont disponibles. Les transcriptions pourront être ajoutées après leur préparation et leur vérification.",
+    videoNumberOne: "Vidéo 1",
+    videoNumberTwo: "Vidéo 2",
     organisationsTitle: "Aider les communautés à créer des espaces numériques plus sûrs",
     organisationsText: "Des outils pratiques pour les ONG, les éducateurs et les facilitateurs communautaires.",
     toolkit: "Explorer les ressources pour organisations",
@@ -249,17 +271,72 @@ function App() {
         <section className="feature-section" id="guides">
           <div className="feature-inner section-wrap">
             <div className="feature-art"><div className="video-window"><div className="video-top"><i></i><i></i><i></i><span>SAFE SPACE LEARNING</span></div><div className="video-illustration"><div className="video-phone"><MessageCircle size={31}/><span></span><span></span><span></span></div><div className="video-sun"></div><div className="video-leaf leaf-left"></div><div className="video-leaf leaf-right"></div><PlayCircle size={48} className="play-mark"/></div></div></div>
-            <div className="feature-copy"><span className="eyebrow">WATCH · REFLECT · LEARN</span><h2>{t.video}</h2><p>{t.videoText}</p><button className="btn btn-primary" onClick={()=>goTo("videos")}>{t.watch}<ArrowRight size={17}/></button><small className="placeholder-note">Video links will be added after the original files and permissions are confirmed.</small></div>
+            <div className="feature-copy"><span className="eyebrow">WATCH · REFLECT · LEARN</span><h2>{t.video}</h2><p>{t.videoText}</p><button className="btn btn-primary" onClick={()=>goTo("videos")}>{t.watch}<ArrowRight size={17}/></button><small className="placeholder-note">The two videos below are embedded from the YouTube links supplied for this project.</small></div>
           </div>
         </section>
 
-        <section className="content-section section-wrap" id="videos">
-          <div className="section-heading"><div><span className="eyebrow">PRACTICAL KNOWLEDGE</span><h2>{t.featured}</h2><p>{t.featuredText}</p></div></div>
-          <div className="resource-row">
-            <article className="resource-card"><div className="resource-symbol mint"><BookOpen/></div><div><h3>Understand the signs</h3><p>Learn the language and patterns of online harm.</p><span className="resource-tag">LEARNING GUIDE · COMING SOON</span></div></article>
-            <article className="resource-card"><div className="resource-symbol gold"><ShieldCheck/></div><div><h3>Make your accounts safer</h3><p>Review practical steps for stronger account security.</p><span className="resource-tag">SAFETY CHECKLIST · COMING SOON</span></div></article>
-            <article className="resource-card"><div className="resource-symbol lilac"><Users/></div><div><h3>Start a community conversation</h3><p>Explore ways to facilitate respectful learning.</p><span className="resource-tag">FACILITATOR TOOL · COMING SOON</span></div></article>
+        <section className="video-library-section section-wrap" id="videos">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">WATCH · REFLECT · LEARN</span>
+              <h2>{t.videoLibraryTitle}</h2>
+              <p>{t.videoLibraryIntro}</p>
+            </div>
+            <div className="library-count"><PlayCircle size={17}/><span>2 {lang === "fr" ? "vidéos" : "videos"}</span></div>
           </div>
+          <div className="video-grid">
+            <article className="video-card">
+              <div className="video-card-heading">
+                <span className="video-type">{t.videoNumberOne} · {t.fullVideoLabel}</span>
+                <span className="video-series">WHEN ONLINE HARASSMENT HAPPENS</span>
+              </div>
+              <div className="video-embed video-embed-wide">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/9aBGc1ApjnU"
+                  title="When Online Harassment Happens - full video"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              <div className="video-card-copy">
+                <h3>{t.video}</h3>
+                <p>{t.fullVideoDescription}</p>
+                <div className="video-actions">
+                  <a className="video-text-link" href="https://youtu.be/9aBGc1ApjnU" target="_blank" rel="noreferrer">{t.openYouTube}<ExternalLink size={14}/></a>
+                  <button className="video-text-link" onClick={()=>{setActiveCategory("harassment");goTo("learn");}}>{t.relatedGuides}<ArrowRight size={14}/></button>
+                </div>
+              </div>
+            </article>
+            <article className="video-card video-card-short">
+              <div className="video-card-heading">
+                <span className="video-type">{t.videoNumberTwo} · {t.shortVideoLabel}</span>
+                <span className="video-series">WHEN ONLINE HARASSMENT HAPPENS</span>
+              </div>
+              <div className="short-video-stage">
+                <div className="video-embed video-embed-short">
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/MJCIjRcj0N0"
+                    title="When Online Harassment Happens - short video"
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+              <div className="video-card-copy">
+                <h3>{t.video}</h3>
+                <p>{t.shortVideoDescription}</p>
+                <div className="video-actions">
+                  <a className="video-text-link" href="https://youtube.com/shorts/MJCIjRcj0N0" target="_blank" rel="noreferrer">{t.openYouTube}<ExternalLink size={14}/></a>
+                  <button className="video-text-link" onClick={()=>{setActiveCategory("harassment");goTo("learn");}}>{t.relatedGuides}<ArrowRight size={14}/></button>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p className="video-caption-note"><ShieldCheck size={15}/>{t.captionsNote}</p>
         </section>
 
         <section className="organisation-section" id="organisations">
