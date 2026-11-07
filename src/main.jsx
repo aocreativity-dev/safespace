@@ -39,6 +39,13 @@ const copy = {
     tipText: "Turn on multi-factor authentication for your most important accounts. It adds another layer of protection beyond your password.",
     supportTitle: "You deserve information you can trust.",
     supportText: "Safe Space shares educational information and signposts to external services. We are not an emergency service, legal practice or counselling provider.",
+    directoryHeading: "The Senegal support directory is being prepared",
+    directoryNote: "We will publish service details only after checking the organisation, contact information and scope of support.",
+    directoryButton: "Explore support information",
+    contactHeading: "Contact details are being prepared",
+    contactNote: "This prototype does not yet accept enquiries. Please do not send urgent requests or sensitive personal information.",
+    privacyHeading: "Privacy and safety",
+    privacyNote: "You can explore public resources without creating an account. This prototype does not include case submissions or a connected AI assistant. Full privacy information will be published before any data collection or AI service is introduced.",
     learn: "Explore topics",
     footer: "Safer Digital Spaces. Stronger Communities.",
     footerNote: "A digital-safety education and support-navigation project. Support information is reviewed before publication.",
@@ -87,6 +94,13 @@ const copy = {
     tipText: "Activez l’authentification multifacteur pour vos comptes les plus importants. Elle ajoute une protection au-delà de votre mot de passe.",
     supportTitle: "Vous méritez des informations fiables.",
     supportText: "Safe Space propose des informations éducatives et oriente vers des services externes. Nous ne sommes ni un service d’urgence, ni un cabinet juridique, ni un service de conseil psychologique.",
+    directoryHeading: "L’annuaire des services au Sénégal est en préparation",
+    directoryNote: "Les coordonnées ne seront publiées qu’après vérification de l’organisation, des contacts et de la nature du soutien proposé.",
+    directoryButton: "Consulter les informations de soutien",
+    contactHeading: "Les coordonnées de contact sont en préparation",
+    contactNote: "Cette version de démonstration ne reçoit pas encore de demandes. N’envoyez pas d’informations personnelles sensibles ni de demandes urgentes.",
+    privacyHeading: "Confidentialité et sécurité",
+    privacyNote: "Vous pouvez consulter les ressources publiques sans créer de compte. Cette version ne permet pas de soumettre des dossiers et l’assistant IA n’est pas connecté. Les informations complètes sur la confidentialité seront publiées avant toute collecte de données ou intégration d’un service IA.",
     learn: "Explorer les thèmes",
     footer: "Des espaces numériques plus sûrs. Des communautés plus fortes.",
     footerNote: "Un projet d’éducation à la sécurité numérique et d’orientation vers des ressources de soutien.",
@@ -180,7 +194,7 @@ function App() {
           <div className="section-heading"><div><span className="eyebrow">{t.pathways}</span><h2>{t.pathways}</h2><p>{t.pathwaysIntro}</p></div><button className="text-link" onClick={() => setSearchOpen(!searchOpen)}><Search size={17}/>{t.search}</button></div>
           {searchOpen && <div className="search-box"><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder={t.search} aria-label={t.search}/><button onClick={()=>setQuery("")}>Clear</button></div>}
           <div className="topic-grid">
-            {topics.filter(x => !query || (x.title+" "+x.detail).toLowerCase().includes(query.toLowerCase())).map(({icon:Icon,title,detail},i)=><article className="topic-card" key={title}><div className="topic-icon"><Icon size={23}/></div><span className="card-number">0{i+1}</span><h3>{lang==="fr" ? ["Sécurité des comptes et appareils","Harcèlement en ligne","Vie privée et consentement","Réagir et trouver de l’aide"][i] : title}</h3><p>{detail}</p><button className="card-link" onClick={()=>goTo("guides")}>{t.learn}<ArrowRight size={16}/></button></article>)}
+            {topics.filter(x => !query || (x.title+" "+x.detail).toLowerCase().includes(query.toLowerCase())).map(({icon:Icon,title,detail},i)=><article className="topic-card" key={title}><div className="topic-icon"><Icon size={23}/></div><span className="card-number">0{i+1}</span><h3>{lang==="fr" ? ["Sécurité des comptes et appareils","Harcèlement en ligne","Vie privée et consentement","Réagir et trouver de l’aide"][i] : title}</h3><p>{lang === "fr" ? ["Mots de passe, authentification multifacteur, paramètres de confidentialité et récupération de compte.","Reconnaître les messages nuisibles, les menaces, la surveillance et les contacts répétés non souhaités.","Limites numériques, informations personnelles et abus fondés sur l’image.","Découvrir les options de signalement, la conservation des éléments et les ressources de soutien."][i] : detail}</p><button className="card-link" onClick={()=>goTo("guides")}>{t.learn}<ArrowRight size={16}/></button></article>)}
           </div>
         </section>
 
@@ -215,14 +229,16 @@ function App() {
         </section>
 
         <section className="support-section section-wrap" id="support">
-          <div className="support-copy"><span className="eyebrow">INFORMATION · OPTIONS · CONNECTION</span><h2>{t.supportTitle}</h2><p>{t.supportText}</p><button className="btn btn-primary" onClick={()=>setChatOpen(true)}><HeartHandshake size={17}/>{t.support}</button></div>
+          <div className="support-copy"><span className="eyebrow">INFORMATION · OPTIONS · CONNECTION</span><h2>{t.supportTitle}</h2><p>{t.supportText}</p><button className="btn btn-primary" onClick={()=>goTo("directory")}><HeartHandshake size={17}/>{t.directoryButton}</button><div className="directory-panel" id="directory"><div><strong>{t.directoryHeading}</strong><p>{t.directoryNote}</p></div><span className="pending-label">IN PREPARATION</span></div></div>
           <div className="support-art"><div className="support-circle"><LifeBuoy size={65}/></div><div className="support-dot dot-one"></div><div className="support-dot dot-two"></div><div className="support-dot dot-three"></div></div>
         </section>
 
         <section className="about-section" id="about"><div className="section-wrap about-inner"><div><span className="eyebrow">WHY SAFE SPACE</span><h2>A little more knowledge. A little more confidence.</h2></div><p>{t.aboutText}</p></div></section>
+        <section className="legal-section" id="privacy"><div className="section-wrap legal-inner"><div className="legal-icon"><ShieldCheck size={24}/></div><div><span className="eyebrow">{t.privacy}</span><h2>{t.privacyHeading}</h2><p>{t.privacyNote}</p></div></div></section>
+        <section className="legal-section contact-section" id="contact"><div className="section-wrap legal-inner"><div className="legal-icon"><MessageCircle size={24}/></div><div><span className="eyebrow">{t.contact}</span><h2>{t.contactHeading}</h2><p>{t.contactNote}</p></div></div></section>
       </main>
 
-      <footer className="footer"><div className="section-wrap footer-main"><div className="footer-brand"><a className="brand brand-light" href="#home"><span className="brand-mark"><ShieldCheck/></span><span><strong>Safe Space</strong><small>BY AOCREATIVITY</small></span></a><p>{t.footer}</p></div><div className="footer-links"><button onClick={()=>goTo("learn")}>{t.nav[1]}</button><button onClick={()=>goTo("support")}>{t.nav[3]}</button><button onClick={()=>goTo("about")}>{t.privacy}</button><a href="mailto:hello@aocreativity.com">{t.contact}</a></div></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Safe Space · Prototype</span><span>{t.footerNote}</span></div></footer>
+      <footer className="footer"><div className="section-wrap footer-main"><div className="footer-brand"><a className="brand brand-light" href="#home"><span className="brand-mark"><ShieldCheck/></span><span><strong>Safe Space</strong><small>BY AOCREATIVITY</small></span></a><p>{t.footer}</p></div><div className="footer-links"><button onClick={()=>goTo("learn")}>{t.nav[1]}</button><button onClick={()=>goTo("support")}>{t.nav[3]}</button><button onClick={()=>goTo("privacy")}>{t.privacy}</button><button onClick={()=>goTo("contact")}>{t.contact}</button></div></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Safe Space · Prototype</span><span>{t.footerNote}</span></div></footer>
 
       <button className="chat-launcher" onClick={()=>setChatOpen(true)} aria-label={t.ask}><MessageCircle size={21}/><span>{t.ask}</span></button>
       {chatOpen && <div className="chat-backdrop" onClick={()=>setChatOpen(false)}><section className="chat-panel" role="dialog" aria-modal="true" aria-label={t.chatTitle} onClick={e=>e.stopPropagation()}><header><div className="chat-avatar"><ShieldCheck/></div><div><strong>{t.chatTitle}</strong><small>{t.prototype}</small></div><button onClick={()=>setChatOpen(false)} aria-label={t.close}><X/></button></header><div className="chat-body"><div className="chat-message"><p>{t.chatIntro}</p></div><div className="chat-notice"><Sparkles size={17}/><div><strong>{t.prototype}</strong><p>{t.prototypeText}</p></div></div></div><form className="chat-input" onSubmit={e=>{e.preventDefault();setQuery("");}}><input placeholder={t.chatPlaceholder} aria-label={t.chatPlaceholder} disabled/><button disabled>{t.send}</button></form></section></div>}
