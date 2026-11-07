@@ -6,6 +6,7 @@ import {
   ExternalLink, PlayCircle, Sparkles, LifeBuoy, CheckCircle2, Leaf
 } from "lucide-react";
 import "./styles.css";
+import { learningResources, learningCategories } from "./learning.js";
 
 const copy = {
   en: {
@@ -61,7 +62,15 @@ const copy = {
     aboutText: "Safe Space aims to make digital-safety education accessible, connect people with reliable support information, and equip community organisations with practical resources.",
     privacy: "Privacy & safety",
     contact: "Contact",
-    menu: "Open menu"
+    menu: "Open menu",
+    learningHeading: "Explore the learning library",
+    learningIntro: "Practical, beginner-friendly guides to help you understand online harm and make informed digital-safety choices.",
+    searchResources: "Search guides and topics",
+    readResource: "Read guide",
+    minutes: "min read",
+    noResources: "No guides match your search. Try another word or choose a different topic.",
+    closeArticle: "Close guide",
+    learningNote: "These guides provide general educational information. They are not legal advice or a substitute for qualified local support."
   },
   fr: {
     nav: ["Accueil", "Apprendre", "Guides de sécurité", "Trouver du soutien", "Pour les organisations", "À propos"],
@@ -116,7 +125,15 @@ const copy = {
     aboutText: "Safe Space vise à rendre l’éducation à la sécurité numérique accessible, à orienter vers des informations fiables et à outiller les organisations communautaires.",
     privacy: "Confidentialité et sécurité",
     contact: "Contact",
-    menu: "Ouvrir le menu"
+    menu: "Ouvrir le menu",
+    learningHeading: "Explorer la bibliothèque d’apprentissage",
+    learningIntro: "Des guides pratiques et accessibles pour comprendre les préjudices en ligne et faire des choix éclairés en matière de sécurité numérique.",
+    searchResources: "Rechercher des guides et des thèmes",
+    readResource: "Lire le guide",
+    minutes: "min de lecture",
+    noResources: "Aucun guide ne correspond à votre recherche. Essayez un autre mot ou choisissez un autre thème.",
+    closeArticle: "Fermer le guide",
+    learningNote: "Ces guides fournissent des informations éducatives générales. Ils ne constituent pas un avis juridique et ne remplacent pas un accompagnement local qualifié."
   }
 };
 
@@ -132,8 +149,19 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(true);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedResource, setSelectedResource] = useState(null);
   const t = copy[lang];
+  const searchTerm = query.trim().toLocaleLowerCase();
+  const filteredResources = learningResources.filter((resource) => {
+    const matchesCategory = activeCategory === "all" || resource.category === activeCategory;
+    const searchableText = [
+      resource.title[lang], resource.summary[lang], resource.intro[lang],
+      ...resource.sections.map(section => section.heading[lang] + " " + section.body[lang])
+    ].join(" ").toLocaleLowerCase();
+    return matchesCategory && (!searchTerm || searchableText.includes(searchTerm));
+  });
 
   const goTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -191,11 +219,31 @@ function App() {
         </section>
 
         <section className="content-section section-wrap" id="learn">
-          <div className="section-heading"><div><span className="eyebrow">{t.pathways}</span><h2>{t.pathways}</h2><p>{t.pathwaysIntro}</p></div><button className="text-link" onClick={() => setSearchOpen(!searchOpen)}><Search size={17}/>{t.search}</button></div>
-          {searchOpen && <div className="search-box"><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder={t.search} aria-label={t.search}/><button onClick={()=>setQuery("")}>Clear</button></div>}
-          <div className="topic-grid">
-            {topics.filter(x => !query || (x.title+" "+x.detail).toLowerCase().includes(query.toLowerCase())).map(({icon:Icon,title,detail},i)=><article className="topic-card" key={title}><div className="topic-icon"><Icon size={23}/></div><span className="card-number">0{i+1}</span><h3>{lang==="fr" ? ["Sécurité des comptes et appareils","Harcèlement en ligne","Vie privée et consentement","Réagir et trouver de l’aide"][i] : title}</h3><p>{lang === "fr" ? ["Mots de passe, authentification multifacteur, paramètres de confidentialité et récupération de compte.","Reconnaître les messages nuisibles, les menaces, la surveillance et les contacts répétés non souhaités.","Limites numériques, informations personnelles et abus fondés sur l’image.","Découvrir les options de signalement, la conservation des éléments et les ressources de soutien."][i] : detail}</p><button className="card-link" onClick={()=>goTo("guides")}>{t.learn}<ArrowRight size={16}/></button></article>)}
+          <div className="section-heading learning-heading">
+            <div>
+              <span className="eyebrow">{t.pathways}</span>
+              <h2>{t.learningHeading}</h2>
+              <p>{t.learningIntro}</p>
+            </div>
+            <div className="library-count"><BookOpen size={17}/><span>{filteredResources.length} {lang === "fr" ? "guides" : "guides"}</span></div>
           </div>
+          <div className="search-box learning-search">
+            <Search size={18}/>
+            <input value={query} onChange={e=>setQuery(e.target.value)} placeholder={t.searchResources} aria-label={t.searchResources}/>
+            {query && <button onClick={()=>setQuery("")}>×</button>}
+          </div>
+          <div className="category-filters" role="group" aria-label={t.learningHeading}>
+            {learningCategories.map(category => <button key={category.id} className={activeCategory===category.id ? "filter-pill active" : "filter-pill"} onClick={()=>setActiveCategory(category.id)}>{category.label[lang]}</button>)}
+          </div>
+          {filteredResources.length > 0 ? <div className="learning-grid">
+            {filteredResources.map(resource => <article className="learning-card" key={resource.id}>
+              <div className="learning-card-top"><span className="learning-icon"><BookOpen size={20}/></span><span className="reading-time">{resource.minutes} {t.minutes}</span></div>
+              <h3>{resource.title[lang]}</h3>
+              <p>{resource.summary[lang]}</p>
+              <button className="card-link" onClick={()=>setSelectedResource(resource)}>{t.readResource}<ArrowRight size={16}/></button>
+            </article>)}
+          </div> : <div className="no-results"><Search size={22}/><p>{t.noResources}</p></div>}
+          <p className="learning-note"><ShieldCheck size={15}/>{t.learningNote}</p>
         </section>
 
         <section className="feature-section" id="guides">
@@ -240,6 +288,21 @@ function App() {
 
       <footer className="footer"><div className="section-wrap footer-main"><div className="footer-brand"><a className="brand brand-light" href="#home"><span className="brand-mark"><ShieldCheck/></span><span><strong>Safe Space</strong><small>BY AOCREATIVITY</small></span></a><p>{t.footer}</p></div><div className="footer-links"><button onClick={()=>goTo("learn")}>{t.nav[1]}</button><button onClick={()=>goTo("support")}>{t.nav[3]}</button><button onClick={()=>goTo("privacy")}>{t.privacy}</button><button onClick={()=>goTo("contact")}>{t.contact}</button></div></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Safe Space · Prototype</span><span>{t.footerNote}</span></div></footer>
 
+      {selectedResource && <div className="article-backdrop" onClick={()=>setSelectedResource(null)}>
+        <article className="article-modal" role="dialog" aria-modal="true" aria-label={selectedResource.title[lang]} onClick={e=>e.stopPropagation()}>
+          <header className="article-modal-header">
+            <span className="learning-icon"><BookOpen size={20}/></span>
+            <div className="article-modal-heading"><span className="eyebrow">{learningCategories.find(category=>category.id===selectedResource.category)?.label[lang]}</span><h2>{selectedResource.title[lang]}</h2><span className="reading-time">{selectedResource.minutes} {t.minutes}</span></div>
+            <button className="article-close" onClick={()=>setSelectedResource(null)} aria-label={t.closeArticle}><X/></button>
+          </header>
+          <div className="article-modal-body">
+            <p className="article-intro">{selectedResource.intro[lang]}</p>
+            {selectedResource.sections.map((section,index)=><section className="article-section" key={index}><h3>{section.heading[lang]}</h3><p>{section.body[lang]}</p></section>)}
+            <div className="article-reminder"><ShieldCheck size={19}/><p>{selectedResource.reminder[lang]}</p></div>
+            <p className="article-disclaimer">{t.learningNote}</p>
+          </div>
+        </article>
+      </div>}
       <button className="chat-launcher" onClick={()=>setChatOpen(true)} aria-label={t.ask}><MessageCircle size={21}/><span>{t.ask}</span></button>
       {chatOpen && <div className="chat-backdrop" onClick={()=>setChatOpen(false)}><section className="chat-panel" role="dialog" aria-modal="true" aria-label={t.chatTitle} onClick={e=>e.stopPropagation()}><header><div className="chat-avatar"><ShieldCheck/></div><div><strong>{t.chatTitle}</strong><small>{t.prototype}</small></div><button onClick={()=>setChatOpen(false)} aria-label={t.close}><X/></button></header><div className="chat-body"><div className="chat-message"><p>{t.chatIntro}</p></div><div className="chat-notice"><Sparkles size={17}/><div><strong>{t.prototype}</strong><p>{t.prototypeText}</p></div></div></div><form className="chat-input" onSubmit={e=>{e.preventDefault();setQuery("");}}><input placeholder={t.chatPlaceholder} aria-label={t.chatPlaceholder} disabled/><button disabled>{t.send}</button></form></section></div>}
       <div className="safety-disclaimer">Safe Space is an educational and resource-navigation prototype. It is not an emergency service. Quick exit cannot erase browser history or make a monitored device safe.</div>
