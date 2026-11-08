@@ -133,6 +133,7 @@ export const supportResources = [
   {
     id: "ajs-legal",
     category: "legal",
+    additionalCategories: ["women"],
     audience: ["individuals", "organisations"],
     kind: { en: "Legal information and orientation", fr: "Information et orientation juridiques" },
     title: {
@@ -206,6 +207,7 @@ export const supportResources = [
   {
     id: "kayam-womens-support",
     category: "women",
+    additionalCategories: ["psychosocial", "legal"],
     audience: ["individuals"],
     kind: { en: "Women’s violence support and shelter", fr: "Soutien et hébergement pour les femmes victimes de violences" },
     title: { en: "Association KAYAM · Women’s support centre", fr: "Association KAYAM · Centre de soutien aux femmes" },
@@ -238,6 +240,7 @@ export const supportResources = [
   {
     id: "eden-listening-referral",
     category: "protection",
+    additionalCategories: ["women", "child", "psychosocial"],
     audience: ["individuals", "organisations"],
     kind: { en: "Listening, psychosocial support and referral", fr: "Écoute, accompagnement psychosocial et orientation" },
     title: { en: "ONG EDEN Senegal · Listening and referral office", fr: "ONG EDEN Sénégal · Bureau d’écoute et d’orientation" },
