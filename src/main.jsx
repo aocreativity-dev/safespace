@@ -277,7 +277,7 @@ function App() {
   const t = copy[lang];
   const supportTerm = supportQuery.trim().toLocaleLowerCase();
   const visibleSupportResources = supportResources.filter(resource => {
-    const matchesCategory = supportCategory === "all" || resource.category === supportCategory;
+    const matchesCategory = supportCategory === "all" || resource.category === supportCategory || resource.additionalCategories?.includes(supportCategory);
     const isNationalAccess = resource.accessMode === "national-online" || resource.accessMode === "national-phone";
     const matchesRegion = supportRegion === "all" ||
       (supportRegion === "national" ? isNationalAccess : (isNationalAccess || resource.regions.includes(supportRegion)));
