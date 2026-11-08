@@ -225,8 +225,8 @@ export const supportResources = [
     address: { en: "Pilot centre: Petit Mbao, Dakar Region. Contact KAYAM before travelling to confirm the safest approach and current availability.", fr: "Centre pilote : Petit Mbao, région de Dakar. Contactez KAYAM avant tout déplacement afin de confirmer la démarche la plus sûre et la disponibilité actuelle." },
     locationNote: { en: "KAYAM identifies its pilot shelter in Petit Mbao. Its website lists 24/7 telephone contact, but Safe Space has not test-called the number or confirmed current bed capacity. Contact the organisation before travelling.", fr: "KAYAM situe son centre pilote à Petit Mbao. Son site indique un contact téléphonique 24 h/24, mais Safe Space n’a pas appelé le numéro ni confirmé la capacité d’accueil actuelle. Contactez l’association avant tout déplacement." },
     note: {
-      en: "Contact the organisation to confirm eligibility, intake arrangements, availability, accessibility and any costs before relying on the service. Safe Space cannot arrange accommodation or transport.",
-      fr: "Contactez l’association pour confirmer les conditions d’accès, les modalités d’accueil, la disponibilité, l’accessibilité et les éventuels coûts avant de compter sur ce service. Safe Space ne peut organiser ni hébergement ni transport."
+      en: "KAYAM’s website advertises a 24/7 contact line, but Safe Space has not called it and cannot confirm current response or shelter capacity. Contact the organisation to confirm eligibility, intake arrangements, availability, accessibility and any costs before travelling. Safe Space cannot arrange accommodation or transport.",
+      fr: "Le site de KAYAM annonce une ligne de contact 24 h/24, mais Safe Space ne l’a pas appelée et ne peut confirmer la réponse actuelle ni la capacité d’hébergement. Contactez l’association pour confirmer les conditions d’accès, les modalités d’accueil, la disponibilité, l’accessibilité et les éventuels coûts avant tout déplacement. Safe Space ne peut organiser ni hébergement ni transport."
     },
     checked: "2026-11-08",
     checkStatus: { en: "Service model, Petit Mbao location, telephone and email published on KAYAM’s own website; calls and shelter capacity not independently tested.", fr: "Nature du service, localisation à Petit Mbao, téléphone et courriel publiés sur le site de KAYAM ; appels et capacité d’hébergement non testés de manière indépendante." },
@@ -254,7 +254,7 @@ export const supportResources = [
     additionalEmails: ["edenorg@hotmail.com"],
     coverage: { en: "Listening office in Guédiawaye, Dakar; project intervention reported in 8 regions", fr: "Bureau d’écoute à Guédiawaye, Dakar ; interventions de projets signalées dans 8 régions" },
     accessMode: "regional-presence-reported",
-    regions: ["dakar","diourbel","fatick","kedougou","louga","saint-louis","thies","ziguinchor"],
+    regions: ["dakar"],
     address: { en: "Wakhinane Nimzath, Guédiawaye, Dakar. Contact EDEN before visiting.", fr: "Wakhinane Nimzath, Guédiawaye, Dakar. Contactez EDEN avant de vous déplacer." },
     locationNote: { en: "EDEN publishes a listening-office address in Wakhinane Nimzath, Guédiawaye, and reports programme intervention in Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès and Ziguinchor. The eight-region programme footprint does not mean a listening office exists in every region; confirm the available service point directly.", fr: "EDEN publie une adresse de bureau d’écoute à Wakhinane Nimzath, Guédiawaye, et signale des interventions de projets à Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès et Ziguinchor. Cette couverture de projets ne signifie pas qu’un bureau d’écoute existe dans chaque région ; confirmez directement le point de service disponible." },
     note: {
