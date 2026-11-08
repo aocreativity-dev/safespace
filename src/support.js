@@ -251,14 +251,15 @@ export const supportResources = [
     phone: "+221777285157",
     additionalPhones: ["+221338776676"],
     email: "ong@eden-senegal.org",
+    additionalEmails: ["edenorg@hotmail.com"],
     coverage: { en: "Listening office in Guédiawaye, Dakar; project intervention reported in 8 regions", fr: "Bureau d’écoute à Guédiawaye, Dakar ; interventions de projets signalées dans 8 régions" },
     accessMode: "regional-presence-reported",
     regions: ["dakar","diourbel","fatick","kedougou","louga","saint-louis","thies","ziguinchor"],
     address: { en: "Wakhinane Nimzath, Guédiawaye, Dakar. Contact EDEN before visiting.", fr: "Wakhinane Nimzath, Guédiawaye, Dakar. Contactez EDEN avant de vous déplacer." },
     locationNote: { en: "EDEN publishes a listening-office address in Wakhinane Nimzath, Guédiawaye, and reports programme intervention in Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès and Ziguinchor. The eight-region programme footprint does not mean a listening office exists in every region; confirm the available service point directly.", fr: "EDEN publie une adresse de bureau d’écoute à Wakhinane Nimzath, Guédiawaye, et signale des interventions de projets à Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès et Ziguinchor. Cette couverture de projets ne signifie pas qu’un bureau d’écoute existe dans chaque région ; confirmez directement le point de service disponible." },
     note: {
-      en: "EDEN’s published office hours are Monday to Friday, 08:00–17:00 on its contact information. Contact the office to confirm current intake arrangements and whether it can respond to your specific need. It is not an emergency dispatch service.",
-      fr: "Les informations de contact d’EDEN indiquent des horaires du lundi au vendredi, de 08 h à 17 h. Contactez le bureau pour confirmer les modalités d’accueil actuelles et sa capacité à répondre à votre besoin précis. Ce n’est pas un service d’intervention d’urgence."
+      en: "EDEN’s website advises people concerned about a child in an urgent situation to call its listening office directly. Contact before travelling to confirm intake arrangements and the support currently available. It is not a public emergency-dispatch service.",
+      fr: "Le site d’EDEN conseille aux personnes préoccupées par une situation urgente concernant un enfant d’appeler directement son bureau d’écoute. Contactez le bureau avant de vous déplacer pour confirmer les modalités d’accueil et les services actuellement disponibles. Il ne s’agit pas d’un service public de régulation des urgences."
     },
     checked: "2026-11-08",
     checkStatus: { en: "Current EDEN website lists contact details and listening-office service description; phone numbers not called by Safe Space.", fr: "Le site actuel d’EDEN publie les coordonnées et décrit le bureau d’écoute ; les numéros n’ont pas été appelés par Safe Space." },
@@ -276,8 +277,8 @@ export const supportResources = [
     title: { en: "Safe Open Space Senegal", fr: "Safe Open Space Sénégal" },
     provider: { en: "Safe Open Space · SOS Sénégal", fr: "Safe Open Space · SOS Sénégal" },
     description: {
-      en: "Safe Open Space describes active listening, psychosocial support and referral to appropriate mental-health professionals. It says it offers occasional individual listening sessions and workshops on mental health, psychological first aid and stress management.",
-      fr: "Safe Open Space décrit un service d’écoute active, de soutien psychosocial et d’orientation vers des professionnels de santé mentale. L’organisation indique proposer des séances ponctuelles d’écoute individuelle et des ateliers sur la santé mentale, les premiers secours psychologiques et la gestion du stress."
+      en: "Safe Open Space describes active listening, psychosocial support and referral to appropriate mental-health professionals. Its website says listening is free, anonymous and confidential, and that it offers occasional individual listening sessions and workshops on mental health, psychological first aid and stress management.",
+      fr: "Safe Open Space décrit un service d’écoute active, de soutien psychosocial et d’orientation vers des professionnels de santé mentale. Son site indique que l’écoute est gratuite, anonyme et confidentielle, et que l’organisation propose des séances ponctuelles d’écoute individuelle ainsi que des ateliers sur la santé mentale, les premiers secours psychologiques et la gestion du stress."
     },
     contactLabel: { en: "Visit Safe Open Space", fr: "Visiter Safe Open Space" },
     url: "https://www.safeopenspaces.org/",
@@ -345,7 +346,6 @@ export const supportResources = [
     phone: "+221338375124",
     whatsappNumber: "+221338375124",
     whatsappLabel: { en: "WhatsApp Taxaw Temm", fr: "WhatsApp Taxaw Temm" },
-    assistantNumber: "+221707643176",
     assistantLabel: { en: "WhatsApp Khadija assistant", fr: "Assistant Khadija sur WhatsApp" },
     email: "info@africtivistes.org",
     coverage: { en: "Online · Senegal-based programme", fr: "En ligne · programme basé au Sénégal" },
@@ -354,8 +354,8 @@ export const supportResources = [
     address: { en: "AfricTivistes contact address: BP 19968, VDN 3, Dakar, Senegal. Confirm the best contact channel before sharing personal information.", fr: "Adresse de contact d’AfricTivistes : BP 19968, VDN 3, Dakar, Sénégal. Confirmez le canal de contact approprié avant de partager des informations personnelles." },
     locationNote: { en: "Taxaw Temm is an online campaign and information platform. AfricTivistes publishes a WhatsApp contact for the project and has documented a separate Khadija assistant number. Neither number has been test-messaged by Safe Space.", fr: "Taxaw Temm est une campagne et une plateforme d’information en ligne. AfricTivistes publie un contact WhatsApp pour le projet et a documenté un numéro distinct pour l’assistante Khadija. Aucun des deux numéros n’a été testé par Safe Space." },
     note: {
-      en: "This is an educational and information route, not a statutory emergency or guaranteed case-response service. Do not send intimate images, passwords or detailed sensitive case files to a chatbot or ordinary messaging contact. For suspected crimes, use the Police reporting route separately.",
-      fr: "Il s’agit d’un canal pédagogique et d’information, et non d’un service d’urgence officiel ni d’un service garantissant le traitement d’un dossier. N’envoyez pas d’images intimes, de mots de passe ou de dossiers sensibles détaillés à un chatbot ou à un contact de messagerie ordinaire. Pour les infractions présumées, utilisez séparément le canal de signalement de la Police."
+      en: "Taxaw Temm’s contact page describes its WhatsApp channel as available 24/7, but Safe Space has not test-messaged it and cannot confirm response times or case-handling capacity. It is not a substitute for statutory emergency services. Do not send intimate images, passwords or detailed sensitive case files to a chatbot or ordinary messaging contact. For suspected crimes, use the Police reporting route separately.",
+      fr: "La page de contact de Taxaw Temm présente son canal WhatsApp comme disponible 24 h/24, mais Safe Space n’a pas envoyé de message test et ne peut confirmer les délais de réponse ni la capacité de traitement des dossiers. Ce canal ne remplace pas les services publics d’urgence. N’envoyez pas d’images intimes, de mots de passe ou de dossiers sensibles détaillés à un chatbot ou à un contact de messagerie ordinaire. Pour les infractions présumées, utilisez séparément le canal de signalement de la Police."
     },
     checked: "2026-11-08",
     checkStatus: { en: "Programme description and Khadija number documented by AfricTivistes; contact channels appear on current Taxaw Temm contact page; numbers not test-messaged.", fr: "Description du programme et numéro de Khadija documentés par AfricTivistes ; les canaux de contact figurent sur la page de contact actuelle de Taxaw Temm ; numéros non testés par message." },
