@@ -8,7 +8,7 @@ import {
 import "./styles.css";
 import { learningResources, learningCategories } from "./learning.js";
 import { toolkitResources, toolkitCategories, toolkitCategoryByResource } from "./toolkit.js";
-import { supportResources, supportCategories } from "./support.js";
+import { supportResources, supportCategories, senegalRegions } from "./support.js";
 
 const copy = {
   en: {
@@ -72,6 +72,13 @@ const copy = {
     directoryButton: "Explore support information",
     directoryIntro: "Choose the type of information you need. A listing is not a guarantee of service availability, eligibility or outcome.",
     directorySearch: "Search by service, topic or organisation",
+    directoryRegionLabel: "Filter by region",
+    directoryAllRegions: "All Senegal",
+    directoryNationalAccess: "National phone and online services",
+    directoryRegionHelp: "A regional selection shows national phone/online services plus listings with a reported presence in that region. Confirm exact office details before travelling.",
+    directoryRegionalPresence: "Regional presence reported",
+    directoryNationalBadge: "National phone / online access",
+    directoryLocationDetails: "Location and access",
     directoryAll: "All resources",
     directorySourceChecked: "Source checked",
     directoryCall: "Call",
@@ -184,6 +191,13 @@ const copy = {
     directoryButton: "Consulter les informations de soutien",
     directoryIntro: "Choisissez le type d’information dont vous avez besoin. Une fiche ne garantit ni la disponibilité du service, ni l’éligibilité, ni un résultat.",
     directorySearch: "Rechercher un service, un thème ou une organisation",
+    directoryRegionLabel: "Filtrer par région",
+    directoryAllRegions: "Tout le Sénégal",
+    directoryNationalAccess: "Services nationaux par téléphone et en ligne",
+    directoryRegionHelp: "Le choix d’une région affiche les services nationaux par téléphone/en ligne ainsi que les services dont une présence dans cette région a été signalée. Confirmez l’adresse exacte avant de vous déplacer.",
+    directoryRegionalPresence: "Présence régionale signalée",
+    directoryNationalBadge: "Accès national par téléphone / en ligne",
+    directoryLocationDetails: "Localisation et accès",
     directoryAll: "Toutes les ressources",
     directorySourceChecked: "Source consultée",
     directoryCall: "Appeler",
@@ -256,13 +270,18 @@ function App() {
   const [toolkitCategory, setToolkitCategory] = useState("all");
   const [supportQuery, setSupportQuery] = useState("");
   const [supportCategory, setSupportCategory] = useState("all");
+  const [supportRegion, setSupportRegion] = useState("all");
   const [selectedSupport, setSelectedSupport] = useState(null);
   const t = copy[lang];
   const supportTerm = supportQuery.trim().toLocaleLowerCase();
   const visibleSupportResources = supportResources.filter(resource => {
     const matchesCategory = supportCategory === "all" || resource.category === supportCategory;
-    const fields = [resource.title[lang], resource.provider[lang], resource.description[lang], resource.coverage[lang], resource.kind[lang]].join(" ").toLocaleLowerCase();
-    return matchesCategory && (!supportTerm || fields.includes(supportTerm));
+    const isNationalAccess = resource.accessMode === "national-online" || resource.accessMode === "national-phone";
+    const matchesRegion = supportRegion === "all" ||
+      (supportRegion === "national" ? isNationalAccess : (isNationalAccess || resource.regions.includes(supportRegion)));
+    const listedRegions = senegalRegions.filter(region => resource.regions.includes(region.id)).map(region => region.label[lang]);
+    const fields = [resource.title[lang], resource.provider[lang], resource.description[lang], resource.coverage[lang], resource.kind[lang], resource.locationNote[lang], ...listedRegions].join(" ").toLocaleLowerCase();
+    return matchesCategory && matchesRegion && (!supportTerm || fields.includes(supportTerm));
   });
   const visibleToolkitResources = toolkitResources.filter(resource =>
     toolkitCategory === "all" || toolkitCategoryByResource[resource.id] === toolkitCategory
@@ -488,12 +507,22 @@ function App() {
             <input value={supportQuery} onChange={e=>setSupportQuery(e.target.value)} placeholder={t.directorySearch} aria-label={t.directorySearch}/>
             {supportQuery && <button onClick={()=>setSupportQuery("")} aria-label={lang==="fr"?"Effacer la recherche":"Clear search"}>×</button>}
           </div>
+          <div className="region-filter-row">
+            <label className="region-filter-label" htmlFor="support-region"><MapPin size={16}/>{t.directoryRegionLabel}</label>
+            <select id="support-region" className="region-select" value={supportRegion} onChange={e=>setSupportRegion(e.target.value)}>
+              <option value="all">{t.directoryAllRegions}</option>
+              <option value="national">{t.directoryNationalAccess}</option>
+              {senegalRegions.map(region=><option key={region.id} value={region.id}>{region.label[lang]}</option>)}
+            </select>
+          </div>
+          <p className="region-filter-help">{t.directoryRegionHelp}</p>
           <div className="directory-filters" role="group" aria-label={t.directoryHeading}>
             {supportCategories.map(category=><button key={category.id} className={supportCategory===category.id?"filter-pill active":"filter-pill"} onClick={()=>setSupportCategory(category.id)}>{category.id==="all"?t.directoryAll:category.label[lang]}</button>)}
           </div>
           {visibleSupportResources.length>0 ? <div className="support-grid">
             {visibleSupportResources.map(resource=><article className="support-card" key={resource.id}>
               <div className="support-card-top"><span className="support-kind">{resource.kind[lang]}</span><span className="support-status"><CheckCircle2 size={13}/>{t.directorySourceChecked}</span></div>
+              <span className={resource.accessMode==="regional-presence-reported" ? "support-access-badge regional" : "support-access-badge national"}>{resource.accessMode==="regional-presence-reported" ? t.directoryRegionalPresence : t.directoryNationalBadge}</span>
               <span className="support-provider">{resource.provider[lang]}</span>
               <h3>{resource.title[lang]}</h3>
               <p>{resource.description[lang]}</p>
@@ -540,6 +569,7 @@ function App() {
               <div><span>{t.directoryCoverage}</span><strong>{selectedSupport.coverage[lang]}</strong></div>
               <div><span>{t.directoryLastChecked}</span><strong>{selectedSupport.checked}</strong></div>
             </div>
+            <section className="support-detail-block"><h3>{t.directoryLocationDetails}</h3><p>{selectedSupport.locationNote[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directoryLimit}</h3><p>{selectedSupport.note[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directoryVerification}</h3><p>{selectedSupport.checkStatus[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directorySources}</h3>
