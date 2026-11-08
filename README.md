@@ -17,6 +17,12 @@ This repository contains an early responsive React/Vite website prototype with:
 - Learning topics and resource placeholders
 - Motion design with reduced-motion support
 - Support directory placeholder, clearly marked as in preparation
+- Bilingual organisation resource centre with four printable resources:
+  - 75-minute digital-safety workshop session plan
+  - Respectful discussion guide using fictional scenarios
+  - Safer session preparation checklist
+  - Responsible digital-safety campaign review checklist
+- Resource reader with browser print / Save as PDF
 - Privacy and contact information placeholders
 - Chatbot interface marked as not connected
 - Safety disclaimer and quick-exit control
@@ -55,6 +61,7 @@ The included `netlify.toml` supplies these settings.
 - Obtain appropriate safeguarding, privacy and legal review.
 - Review English and French content with human reviewers.
 - Test accessibility, security, mobile performance and all links.
+- Review organisation toolkit resources with safeguarding and training specialists before external use.
 - Select and configure any AI provider only after privacy and cost assessment.
 
 ## Governance
