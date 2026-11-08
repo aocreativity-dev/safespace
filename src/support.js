@@ -172,10 +172,10 @@ export const supportResources = [
     audience: ["individuals"],
     kind: { en: "Official emergency contacts", fr: "Contacts officiels d’urgence" },
     title: {
-      en: "Police and Fire & Rescue emergency services",
-      fr: "Services d’urgence de la Police et des Sapeurs-pompiers"
+      en: "Police, Fire & Rescue and SAMU emergency contacts",
+      fr: "Contacts d’urgence de la Police, des Sapeurs-pompiers et du SAMU"
     },
-    provider: { en: "Ministry of the Interior and Public Security · Senegal", fr: "Ministère de l’Intérieur et de la Sécurité publique · Sénégal" },
+    provider: { en: "Ministry of the Interior and Ministry of Health · Senegal", fr: "Ministère de l’Intérieur et Ministère de la Santé · Sénégal" },
     description: {
       en: "Official emergency contacts published by Senegalese authorities: Police 17, Fire & Rescue 18, and SAMU medical emergency 1515.",
       fr: "Contacts d’urgence officiels publiés par les autorités sénégalaises : Police 17, Sapeurs-pompiers 18 et urgence médicale SAMU 1515."
@@ -194,8 +194,8 @@ export const supportResources = [
     regions: [],
     locationNote: { en: "National emergency telephone numbers published by the Ministry of the Interior. They are not local office addresses.", fr: "Numéros téléphoniques nationaux d’urgence publiés par le Ministère de l’Intérieur. Il ne s’agit pas d’adresses de bureaux locaux." },
     note: {
-      en: "Use these numbers for immediate emergencies. Safe Space cannot contact emergency services or monitor a visitor's safety.",
-      fr: "Utilisez ces numéros en cas d’urgence immédiate. Safe Space ne peut pas contacter les services d’urgence ni surveiller la sécurité d’un visiteur."
+      en: "The Ministry of Health describes 1515 as a free national call number for medical, surgical and obstetric emergencies. Use the relevant number for an immediate emergency. Safe Space cannot contact emergency services or monitor a visitor's safety.",
+      fr: "Le Ministère de la Santé présente le 1515 comme un numéro national gratuit pour les urgences médicales, chirurgicales et obstétricales. Utilisez le numéro adapté en cas d’urgence immédiate. Safe Space ne peut pas contacter les services d’urgence ni surveiller la sécurité d’un visiteur."
     },
     checked: "2026-11-08",
     checkStatus: { en: "Numbers and 24-hour emergency designation published by the Ministry of the Interior; calls not test-made.", fr: "Numéros et disponibilité d’urgence 24 h/24 publiés par le Ministère de l’Intérieur ; appels non testés." },
@@ -258,7 +258,7 @@ export const supportResources = [
     coverage: { en: "Listening office in Guédiawaye, Dakar; project intervention reported in 8 regions", fr: "Bureau d’écoute à Guédiawaye, Dakar ; interventions de projets signalées dans 8 régions" },
     accessMode: "regional-presence-reported",
     regions: ["dakar"],
-    address: { en: "Wakhinane Nimzath, Guédiawaye, Dakar. Contact EDEN before visiting.", fr: "Wakhinane Nimzath, Guédiawaye, Dakar. Contactez EDEN avant de vous déplacer." },
+    address: { en: "Angle Mouss 1, Villa No. 513, opposite the Serigne Mokhtar Diop Mosque, Wakhinane Nimzath, Guédiawaye, Dakar. Contact EDEN before visiting.", fr: "Angle Mouss 1, Villa n° 513, en face de la mosquée Serigne Mokhtar Diop, Wakhinane Nimzath, Guédiawaye, Dakar. Contactez EDEN avant de vous déplacer." },
     locationNote: { en: "EDEN publishes a listening-office address in Wakhinane Nimzath, Guédiawaye, and reports programme intervention in Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès and Ziguinchor. The eight-region programme footprint does not mean a listening office exists in every region; confirm the available service point directly.", fr: "EDEN publie une adresse de bureau d’écoute à Wakhinane Nimzath, Guédiawaye, et signale des interventions de projets à Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès et Ziguinchor. Cette couverture de projets ne signifie pas qu’un bureau d’écoute existe dans chaque région ; confirmez directement le point de service disponible." },
     note: {
       en: "EDEN’s website advises people concerned about a child in an urgent situation to call its listening office directly. Contact before travelling to confirm intake arrangements and the support currently available. It is not a public emergency-dispatch service.",
