@@ -176,13 +176,17 @@ export const supportResources = [
     },
     provider: { en: "Ministry of the Interior and Public Security · Senegal", fr: "Ministère de l’Intérieur et de la Sécurité publique · Sénégal" },
     description: {
-      en: "The Ministry of the Interior publishes Police Secours 17 and Sapeurs-Pompiers 18 as 24-hour emergency numbers.",
-      fr: "Le Ministère de l’Intérieur publie les numéros Police Secours 17 et Sapeurs-pompiers 18 comme numéros d’urgence disponibles 24 h/24."
+      en: "Official emergency contacts published by Senegalese authorities: Police 17, Fire & Rescue 18, and SAMU medical emergency 1515.",
+      fr: "Contacts d’urgence officiels publiés par les autorités sénégalaises : Police 17, Sapeurs-pompiers 18 et urgence médicale SAMU 1515."
     },
     contactLabel: { en: "View official emergency information", fr: "Voir les informations officielles sur les urgences" },
     url: "https://www.interieur.gouv.sn/contact",
     phone: null,
-    emergencyNumbers: [{ label: { en: "Police", fr: "Police" }, number: "17" }, { label: { en: "Fire & rescue", fr: "Sapeurs-pompiers" }, number: "18" }],
+    emergencyNumbers: [
+      { label: { en: "Police", fr: "Police" }, number: "17" },
+      { label: { en: "Fire & rescue", fr: "Sapeurs-pompiers" }, number: "18" },
+      { label: { en: "SAMU medical emergency", fr: "Urgence médicale SAMU" }, number: "1515" }
+    ],
     email: null,
     coverage: { en: "National · emergencies", fr: "National · urgences" },
     accessMode: "national-phone",
@@ -195,7 +199,200 @@ export const supportResources = [
     checked: "2026-11-08",
     checkStatus: { en: "Numbers and 24-hour emergency designation published by the Ministry of the Interior; calls not test-made.", fr: "Numéros et disponibilité d’urgence 24 h/24 publiés par le Ministère de l’Intérieur ; appels non testés." },
     sources: [
-      { label: "Ministry of the Interior · Contact and emergency numbers", url: "https://www.interieur.gouv.sn/contact" }
+      { label: "Ministry of the Interior · Police and Fire & Rescue numbers", url: "https://www.interieur.gouv.sn/contact" },
+      { label: "Ministry of Health · SAMU National and 1515", url: "https://www.sante.gouv.sn/Pr%C3%A9sentation/la-d%C3%A9couverte-du-samu-national" }
+    ]
+  },
+  {
+    id: "kayam-womens-support",
+    category: "women",
+    audience: ["individuals"],
+    kind: { en: "Women’s violence support and shelter", fr: "Soutien et hébergement pour les femmes victimes de violences" },
+    title: { en: "Association KAYAM · Women’s support centre", fr: "Association KAYAM · Centre de soutien aux femmes" },
+    provider: { en: "Association KAYAM · Petit Mbao, Dakar", fr: "Association KAYAM · Petit Mbao, Dakar" },
+    description: {
+      en: "KAYAM describes services for women affected by domestic and intimate-partner violence, including accommodation, medical, psychological and legal support. Its pilot centre in Petit Mbao says it can accommodate women with young children.",
+      fr: "KAYAM décrit des services destinés aux femmes victimes de violences domestiques et conjugales, notamment l’hébergement ainsi qu’un accompagnement médical, psychologique et juridique. Son centre pilote à Petit Mbao indique pouvoir accueillir des femmes accompagnées de jeunes enfants."
+    },
+    contactLabel: { en: "Visit KAYAM", fr: "Visiter le site de KAYAM" },
+    url: "https://www.kayamsenegal.com/",
+    phone: "+221777744803",
+    additionalPhones: ["+221774654848"],
+    email: "contact@kayamsenegal.com",
+    coverage: { en: "Petit Mbao · Dakar Region", fr: "Petit Mbao · Région de Dakar" },
+    accessMode: "regional-presence-reported",
+    regions: ["dakar"],
+    address: { en: "Pilot centre: Petit Mbao, Dakar Region. Contact KAYAM before travelling to confirm the safest approach and current availability.", fr: "Centre pilote : Petit Mbao, région de Dakar. Contactez KAYAM avant tout déplacement afin de confirmer la démarche la plus sûre et la disponibilité actuelle." },
+    locationNote: { en: "KAYAM identifies its pilot shelter in Petit Mbao. Its website lists 24/7 telephone contact, but Safe Space has not test-called the number or confirmed current bed capacity. Contact the organisation before travelling.", fr: "KAYAM situe son centre pilote à Petit Mbao. Son site indique un contact téléphonique 24 h/24, mais Safe Space n’a pas appelé le numéro ni confirmé la capacité d’accueil actuelle. Contactez l’association avant tout déplacement." },
+    note: {
+      en: "Contact the organisation to confirm eligibility, intake arrangements, availability, accessibility and any costs before relying on the service. Safe Space cannot arrange accommodation or transport.",
+      fr: "Contactez l’association pour confirmer les conditions d’accès, les modalités d’accueil, la disponibilité, l’accessibilité et les éventuels coûts avant de compter sur ce service. Safe Space ne peut organiser ni hébergement ni transport."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Service model, Petit Mbao location, telephone and email published on KAYAM’s own website; calls and shelter capacity not independently tested.", fr: "Nature du service, localisation à Petit Mbao, téléphone et courriel publiés sur le site de KAYAM ; appels et capacité d’hébergement non testés de manière indépendante." },
+    sources: [
+      { label: "KAYAM official website · services and pilot centre", url: "https://www.kayamsenegal.com/" },
+      { label: "KAYAM · Centre pilot information", url: "https://kayamsenegal.com/centre-pilote.php" }
+    ]
+  },
+  {
+    id: "eden-listening-referral",
+    category: "protection",
+    audience: ["individuals", "organisations"],
+    kind: { en: "Listening, psychosocial support and referral", fr: "Écoute, accompagnement psychosocial et orientation" },
+    title: { en: "ONG EDEN Senegal · Listening and referral office", fr: "ONG EDEN Sénégal · Bureau d’écoute et d’orientation" },
+    provider: { en: "Éducation et Développement de l’Enfant (EDEN)", fr: "Éducation et Développement de l’Enfant (EDEN)" },
+    description: {
+      en: "EDEN says its listening office welcomes children, young people and women affected by violence, provides a safe listening and psychosocial support pathway, and refers people to medical, judicial and socio-economic services when needed.",
+      fr: "EDEN indique que son bureau d’écoute accueille les enfants, les jeunes et les femmes victimes de violences, propose une écoute et un accompagnement psychosocial, puis oriente si nécessaire vers des services médicaux, judiciaires et socio-économiques."
+    },
+    contactLabel: { en: "Visit EDEN", fr: "Visiter le site d’EDEN" },
+    url: "https://edensenegal.org/",
+    phone: "+221777285157",
+    additionalPhones: ["+221338776676"],
+    email: "ong@eden-senegal.org",
+    coverage: { en: "Listening office in Guédiawaye, Dakar; project intervention reported in 8 regions", fr: "Bureau d’écoute à Guédiawaye, Dakar ; interventions de projets signalées dans 8 régions" },
+    accessMode: "regional-presence-reported",
+    regions: ["dakar","diourbel","fatick","kedougou","louga","saint-louis","thies","ziguinchor"],
+    address: { en: "Wakhinane Nimzath, Guédiawaye, Dakar. Contact EDEN before visiting.", fr: "Wakhinane Nimzath, Guédiawaye, Dakar. Contactez EDEN avant de vous déplacer." },
+    locationNote: { en: "EDEN publishes a listening-office address in Wakhinane Nimzath, Guédiawaye, and reports programme intervention in Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès and Ziguinchor. The eight-region programme footprint does not mean a listening office exists in every region; confirm the available service point directly.", fr: "EDEN publie une adresse de bureau d’écoute à Wakhinane Nimzath, Guédiawaye, et signale des interventions de projets à Dakar, Diourbel, Fatick, Kédougou, Louga, Saint-Louis, Thiès et Ziguinchor. Cette couverture de projets ne signifie pas qu’un bureau d’écoute existe dans chaque région ; confirmez directement le point de service disponible." },
+    note: {
+      en: "EDEN’s published office hours are Monday to Friday, 08:00–17:00 on its contact information. Contact the office to confirm current intake arrangements and whether it can respond to your specific need. It is not an emergency dispatch service.",
+      fr: "Les informations de contact d’EDEN indiquent des horaires du lundi au vendredi, de 08 h à 17 h. Contactez le bureau pour confirmer les modalités d’accueil actuelles et sa capacité à répondre à votre besoin précis. Ce n’est pas un service d’intervention d’urgence."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Current EDEN website lists contact details and listening-office service description; phone numbers not called by Safe Space.", fr: "Le site actuel d’EDEN publie les coordonnées et décrit le bureau d’écoute ; les numéros n’ont pas été appelés par Safe Space." },
+    sources: [
+      { label: "EDEN · Listening office and support pathway", url: "https://edensenegal.org/le-bureau-d-ecoute-accueillir-ecouter-orienter-suivre/" },
+      { label: "EDEN · Contact and office location", url: "https://edensenegal.org/contact/" },
+      { label: "EDEN · Intervention areas", url: "https://edensenegal.org/domaines-d-intervention/" }
+    ]
+  },
+  {
+    id: "safe-open-spaces",
+    category: "psychosocial",
+    audience: ["individuals"],
+    kind: { en: "Active listening and psychosocial referral", fr: "Écoute active et orientation psychosociale" },
+    title: { en: "Safe Open Space Senegal", fr: "Safe Open Space Sénégal" },
+    provider: { en: "Safe Open Space · SOS Sénégal", fr: "Safe Open Space · SOS Sénégal" },
+    description: {
+      en: "Safe Open Space describes active listening, psychosocial support and referral to appropriate mental-health professionals. It says it offers occasional individual listening sessions and workshops on mental health, psychological first aid and stress management.",
+      fr: "Safe Open Space décrit un service d’écoute active, de soutien psychosocial et d’orientation vers des professionnels de santé mentale. L’organisation indique proposer des séances ponctuelles d’écoute individuelle et des ateliers sur la santé mentale, les premiers secours psychologiques et la gestion du stress."
+    },
+    contactLabel: { en: "Visit Safe Open Space", fr: "Visiter Safe Open Space" },
+    url: "https://www.safeopenspaces.org/",
+    phone: null,
+    email: "contacts@safeopenspaces.org",
+    additionalEmails: ["snsafeopenspaces@gmail.com"],
+    coverage: { en: "Online contact · Senegal and diaspora", fr: "Contact en ligne · Sénégal et diaspora" },
+    accessMode: "national-online",
+    regions: [],
+    address: { en: "No walk-in address or telephone number is published in the contact information reviewed. Use the website or email first.", fr: "Aucune adresse d’accueil ni aucun numéro de téléphone n’est publié dans les informations de contact consultées. Utilisez d’abord le site ou le courriel." },
+    locationNote: { en: "The organisation describes a Senegal and diaspora audience and provides website and email contact. No telephone hotline or regional walk-in office was confirmed in the reviewed information.", fr: "L’organisation décrit un public au Sénégal et dans la diaspora et propose un contact par site web et courriel. Aucun numéro d’écoute téléphonique ni bureau régional d’accueil n’a été confirmé dans les informations consultées." },
+    note: {
+      en: "The organisation states that its listening service does not replace therapy and that it can refer people to trained professionals. Do not use email for immediate danger or send sensitive material unless the organisation has explained a safe process.",
+      fr: "L’organisation précise que son service d’écoute ne remplace pas une thérapie et qu’il peut orienter vers des professionnels formés. N’utilisez pas le courriel en cas de danger immédiat et n’envoyez pas de contenu sensible sans que l’organisation ait expliqué une procédure sûre."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Service scope and contact emails published in the organisation’s own FAQ; no phone number or physical intake point confirmed.", fr: "La nature du service et les adresses électroniques figurent dans la FAQ de l’organisation ; aucun numéro de téléphone ni lieu d’accueil physique n’a été confirmé." },
+    sources: [
+      { label: "Safe Open Space · About and FAQ", url: "https://www.safeopenspaces.org/" }
+    ]
+  },
+  {
+    id: "mental-health-division",
+    category: "mentalhealth",
+    audience: ["individuals","organisations"],
+    kind: { en: "Government mental-health information and coordination", fr: "Information et coordination publiques en santé mentale" },
+    title: { en: "Ministry of Health · Mental Health Division", fr: "Ministère de la Santé · Division de la Santé mentale" },
+    provider: { en: "Direction Générale de la Santé · Senegal", fr: "Direction Générale de la Santé · Sénégal" },
+    description: {
+      en: "The Ministry describes the Mental Health Division as coordinating national mental-health action, promoting access to care and supporting community mental health. This is an institutional information and coordination contact, not a counselling hotline.",
+      fr: "Le Ministère présente la Division de la Santé mentale comme chargée de coordonner les actions nationales en santé mentale, de promouvoir l’accès aux soins et de soutenir la santé mentale communautaire. Il s’agit d’un contact institutionnel d’information et de coordination, et non d’une ligne d’écoute psychologique."
+    },
+    contactLabel: { en: "Visit Ministry of Health", fr: "Visiter le Ministère de la Santé" },
+    url: "https://www.sante.gouv.sn/programmes-et-projets/programme-sant%C3%A9-mentale-psm",
+    phone: "+221338694292",
+    email: "divisionsantementalesenegal@gmail.com",
+    coverage: { en: "Dakar Fann · national coordination", fr: "Dakar Fann · coordination nationale" },
+    accessMode: "regional-presence-reported",
+    regions: ["dakar"],
+    address: { en: "Rue Aimé Césaire, Dakar Fann. Confirm public reception arrangements before visiting.", fr: "Rue Aimé Césaire, Dakar Fann. Confirmez les modalités d’accueil du public avant de vous déplacer." },
+    locationNote: { en: "The Ministry lists the Division at Rue Aimé Césaire, Dakar Fann. Its role is national coordination and public-health programme work; it is not presented as a walk-in therapy clinic.", fr: "Le Ministère situe la Division rue Aimé Césaire, Dakar Fann. Son rôle relève de la coordination nationale et des programmes de santé publique ; elle n’est pas présentée comme une clinique de thérapie en accès direct." },
+    note: {
+      en: "For urgent medical emergencies, use SAMU 1515 rather than this administrative contact. Ask the Division or a health facility for current routes to local mental-health care.",
+      fr: "En cas d’urgence médicale, contactez le SAMU au 1515 plutôt que ce service administratif. Demandez à la Division ou à une structure de santé les voies actuelles d’accès aux soins de santé mentale locaux."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Address, telephone, email and mandate listed on the Ministry of Health official programme page; call not test-made.", fr: "Adresse, téléphone, courriel et mandat publiés sur la page officielle du programme du Ministère de la Santé ; appel non testé." },
+    sources: [
+      { label: "Ministry of Health · Mental Health Programme", url: "https://www.sante.gouv.sn/programmes-et-projets/programme-sant%C3%A9-mentale-psm" }
+    ]
+  },
+  {
+    id: "taxaw-temm",
+    category: "digitalrights",
+    audience: ["individuals","organisations"],
+    kind: { en: "Digital-safety education and online-harassment information", fr: "Éducation à la sécurité numérique et information sur le cyberharcèlement" },
+    title: { en: "Taxaw Temm · AfricTivistes Women & Cybersecurity", fr: "Taxaw Temm · AfricTivistes Femmes Cybersécurité" },
+    provider: { en: "AfricTivistes · Senegal-based civil-society initiative", fr: "AfricTivistes · initiative de la société civile basée au Sénégal" },
+    description: {
+      en: "Taxaw Temm is part of AfricTivistes’ Women in Cybersecurity programme. It provides awareness and advocacy resources on online harassment and responsible social-media use. AfricTivistes also documents a Khadija virtual assistant on WhatsApp that provides information and guidance about cyberbullying.",
+      fr: "Taxaw Temm fait partie du programme Femmes Cybersécurité d’AfricTivistes. La plateforme propose des ressources de sensibilisation et de plaidoyer sur le harcèlement en ligne et l’usage responsable des réseaux sociaux. AfricTivistes documente également l’assistante virtuelle Khadija sur WhatsApp, qui fournit des informations et des orientations sur le cyberharcèlement."
+    },
+    contactLabel: { en: "Open Taxaw Temm", fr: "Ouvrir Taxaw Temm" },
+    url: "https://taxawtemm.net/",
+    phone: "+221338375124",
+    whatsappNumber: "+221338375124",
+    whatsappLabel: { en: "WhatsApp Taxaw Temm", fr: "WhatsApp Taxaw Temm" },
+    assistantNumber: "+221707643176",
+    assistantLabel: { en: "WhatsApp Khadija assistant", fr: "Assistant Khadija sur WhatsApp" },
+    email: "info@africtivistes.org",
+    coverage: { en: "Online · Senegal-based programme", fr: "En ligne · programme basé au Sénégal" },
+    accessMode: "national-online",
+    regions: [],
+    address: { en: "AfricTivistes contact address: BP 19968, VDN 3, Dakar, Senegal. Confirm the best contact channel before sharing personal information.", fr: "Adresse de contact d’AfricTivistes : BP 19968, VDN 3, Dakar, Sénégal. Confirmez le canal de contact approprié avant de partager des informations personnelles." },
+    locationNote: { en: "Taxaw Temm is an online campaign and information platform. AfricTivistes publishes a WhatsApp contact for the project and has documented a separate Khadija assistant number. Neither number has been test-messaged by Safe Space.", fr: "Taxaw Temm est une campagne et une plateforme d’information en ligne. AfricTivistes publie un contact WhatsApp pour le projet et a documenté un numéro distinct pour l’assistante Khadija. Aucun des deux numéros n’a été testé par Safe Space." },
+    note: {
+      en: "This is an educational and information route, not a statutory emergency or guaranteed case-response service. Do not send intimate images, passwords or detailed sensitive case files to a chatbot or ordinary messaging contact. For suspected crimes, use the Police reporting route separately.",
+      fr: "Il s’agit d’un canal pédagogique et d’information, et non d’un service d’urgence officiel ni d’un service garantissant le traitement d’un dossier. N’envoyez pas d’images intimes, de mots de passe ou de dossiers sensibles détaillés à un chatbot ou à un contact de messagerie ordinaire. Pour les infractions présumées, utilisez séparément le canal de signalement de la Police."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Programme description and Khadija number documented by AfricTivistes; contact channels appear on current Taxaw Temm contact page; numbers not test-messaged.", fr: "Description du programme et numéro de Khadija documentés par AfricTivistes ; les canaux de contact figurent sur la page de contact actuelle de Taxaw Temm ; numéros non testés par message." },
+    sources: [
+      { label: "AfricTivistes · Women & Cybersecurity / Taxaw Temm programme", url: "https://africtivistes.com/fr/initiatives/africtivistes-femmes-cybersecurite" },
+      { label: "AfricTivistes · Khadija assistant announcement", url: "https://africtivistes.com/en/blog/the-khadija-chatbot-a-virtual-assistant-designed-to-promote-the-safe-and-responsible-use-of-social-media-as-well-as-combatting-cyberbullying/" },
+      { label: "Taxaw Temm · Current contact page", url: "https://taxawtemm.net/contact" }
+    ]
+  },
+  {
+    id: "jonction-digital-rights",
+    category: "digitalrights",
+    audience: ["individuals","organisations"],
+    kind: { en: "Digital-rights advocacy, research and education", fr: "Plaidoyer, recherche et éducation aux droits numériques" },
+    title: { en: "JONCTION · Digital Rights", fr: "JONCTION · Droits numériques" },
+    provider: { en: "Senegalese civil-society organisation", fr: "Organisation sénégalaise de la société civile" },
+    description: {
+      en: "JONCTION publishes analysis and advocacy material on freedom of expression, digital regulation, online rights and internet access. Its website includes recent work and training or advocacy resources. It is listed as an information and civil-society resource, not an individual case-response service.",
+      fr: "JONCTION publie des analyses et des ressources de plaidoyer sur la liberté d’expression, la régulation du numérique, les droits en ligne et l’accès à Internet. Son site présente des travaux récents ainsi que des ressources de formation et de plaidoyer. Il s’agit d’une ressource d’information et de société civile, et non d’un service de traitement individuel de dossiers."
+    },
+    contactLabel: { en: "Visit JONCTION", fr: "Visiter JONCTION" },
+    url: "https://jonctiondroitnumerique.org/",
+    phone: null,
+    email: null,
+    coverage: { en: "Senegal · online publications", fr: "Sénégal · publications en ligne" },
+    accessMode: "national-online",
+    regions: [],
+    address: { en: "No public telephone or email contact was confirmed from the reviewed official pages. Use the website's published channels.", fr: "Aucun numéro de téléphone ni courriel public n’a été confirmé dans les pages officielles consultées. Utilisez les canaux publiés sur le site." },
+    locationNote: { en: "JONCTION is included as a digital-rights learning and advocacy resource. No direct public service address or hotline was verified.", fr: "JONCTION est répertoriée comme ressource d’apprentissage et de plaidoyer sur les droits numériques. Aucune adresse de service direct ni ligne d’écoute n’a été vérifiée." },
+    note: {
+      en: "This organisation's published work is focused on rights, policy, research and advocacy. It is not a hotline, legal-aid intake desk or emergency response service.",
+      fr: "Les travaux publiés par cette organisation portent sur les droits, les politiques publiques, la recherche et le plaidoyer. Il ne s’agit ni d’une ligne d’écoute, ni d’un guichet d’aide juridique individuelle, ni d’un service d’urgence."
+    },
+    checked: "2026-11-08",
+    checkStatus: { en: "Recent site publications on freedom of expression, digital regulation and advocacy were found; no direct public phone or email verified.", fr: "Des publications récentes sur la liberté d’expression, la régulation du numérique et le plaidoyer ont été trouvées ; aucun téléphone ni courriel direct n’a été vérifié." },
+    sources: [
+      { label: "JONCTION · Official website and publications", url: "https://jonctiondroitnumerique.org/" }
     ]
   }
 ];
@@ -207,6 +404,11 @@ export const supportCategories = [
   { id: "privacy", label: { en: "Data protection", fr: "Protection des données" } },
   { id: "child", label: { en: "Child protection", fr: "Protection de l’enfance" } },
   { id: "legal", label: { en: "Legal information", fr: "Information juridique" } },
+  { id: "women", label: { en: "Women's protection", fr: "Protection des femmes" } },
+  { id: "protection", label: { en: "Protection and referral", fr: "Protection et orientation" } },
+  { id: "psychosocial", label: { en: "Psychosocial support", fr: "Soutien psychosocial" } },
+  { id: "mentalhealth", label: { en: "Mental health information", fr: "Information en santé mentale" } },
+  { id: "digitalrights", label: { en: "Digital rights and online safety", fr: "Droits numériques et sécurité en ligne" } },
   { id: "emergency", label: { en: "Emergency", fr: "Urgence" } }
 ];
 
