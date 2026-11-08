@@ -16,7 +16,6 @@ This repository contains an early responsive React/Vite website prototype with:
 - English/French interface toggle
 - Learning topics and resource placeholders
 - Motion design with reduced-motion support
-- Bilingual, searchable Senegal support directory, with source notes, contact links and 14 administrative-region filters
 - Bilingual organisation resource centre with four printable resources:
   - 75-minute digital-safety workshop session plan
   - Respectful discussion guide using fictional scenarios
