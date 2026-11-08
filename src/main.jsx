@@ -531,8 +531,11 @@ function App() {
               <div className="support-coverage"><MapPin size={14}/>{resource.coverage[lang]}</div>
               <div className="support-contact-actions">
                 {resource.phone && <a className="support-contact-link" href={"tel:"+resource.phone}><Phone size={14}/>{resource.phone}</a>}
+                {resource.additionalPhones?.map(number=><a className="support-contact-link" href={"tel:"+number} key={number}><Phone size={14}/>{number}</a>)}
                 {resource.emergencyNumbers?.map(item=><a className="support-contact-link emergency-link" href={"tel:"+item.number} key={item.number}><Phone size={14}/>{item.label[lang]} {item.number}</a>)}
+                {resource.whatsappNumber && <a className="support-contact-link" href={"https://wa.me/"+resource.whatsappNumber.replace(/[^0-9]/g,"")} target="_blank" rel="noreferrer"><MessageCircle size={14}/>{resource.whatsappLabel?.[lang] || "WhatsApp"}</a>}
                 {resource.email && <a className="support-contact-link" href={"mailto:"+resource.email}><Mail size={14}/>{t.directoryEmail}</a>}
+                {resource.additionalEmails?.map(address=><a className="support-contact-link" href={"mailto:"+address} key={address}><Mail size={14}/>{address}</a>)}
               </div>
               <div className="support-card-footer">
                 <a className="btn btn-secondary support-open-link" href={resource.url} target="_blank" rel="noreferrer">{resource.contactLabel[lang]}<ExternalLink size={14}/></a>
@@ -571,7 +574,7 @@ function App() {
               <div><span>{t.directoryCoverage}</span><strong>{selectedSupport.coverage[lang]}</strong></div>
               <div><span>{t.directoryLastChecked}</span><strong>{selectedSupport.checked}</strong></div>
             </div>
-            <section className="support-detail-block"><h3>{t.directoryLocationDetails}</h3><p>{selectedSupport.locationNote[lang]}</p></section>
+            <section className="support-detail-block"><h3>{t.directoryLocationDetails}</h3>{selectedSupport.address?.[lang] && <p>{selectedSupport.address[lang]}</p>}<p>{selectedSupport.locationNote[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directoryLimit}</h3><p>{selectedSupport.note[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directoryVerification}</h3><p>{selectedSupport.checkStatus[lang]}</p></section>
             <section className="support-detail-block"><h3>{t.directorySources}</h3>
