@@ -23,7 +23,10 @@ This repository contains an early responsive React/Vite website prototype with:
   - Safer session preparation checklist
   - Responsible digital-safety campaign review checklist
 - Resource reader with browser print / Save as PDF
-- Senegal support directory with searchable categories and source notes:
+- Senegal support directory with searchable categories, all 14 administrative-region filters and source notes:
+  - Region filtering shows national phone/online services for each region and adds regionally reported service presence where the source identifies it.
+  - The AJS regional presence listing is based on an APS report dated 24 October 2026: Dakar, Thiès, Louga, Ziguinchor, Sédhiou, Kolda and Kédougou. Exact active office addresses and opening hours must be confirmed directly.
+  - ANSD's 14-region structure is used for the region selector.
   - Police cybercrime reporting platform
   - DCSSI Jokkocyber cybersecurity incident portal
   - Commission de Protection des Données Personnelles
