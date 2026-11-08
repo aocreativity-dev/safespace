@@ -163,3 +163,14 @@
 .support-detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
 @media(max-width:900px){.support-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.support-directory-section{padding:62px 0 70px}.support-grid{grid-template-columns:1fr}.support-card{padding:18px}.support-detail-backdrop{padding:9px;align-items:flex-end}.support-detail-modal{max-height:93vh;border-radius:18px 18px 12px 12px}.support-detail-header{padding:17px 16px 15px;gap:10px}.support-detail-body{padding:18px 17px 23px}.support-detail-facts{grid-template-columns:1fr}.support-card-footer{align-items:flex-start}.support-open-link{max-width:100%}}
+
+/* Regional filter for the Senegal support directory */
+.region-filter-row{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin:0 0 8px}
+.region-filter-label{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--teal)}
+.region-filter-label svg{color:var(--teal2)}
+.region-select{min-width:min(360px,100%);max-width:100%;border:1px solid #dce8e2;border-radius:11px;background:#fffefa;color:var(--teal);padding:12px 40px 12px 13px;font:600 11px "DM Sans",sans-serif;outline:none;transition:border-color .2s,box-shadow .2s}
+.region-select:focus{border-color:#78a99a;box-shadow:0 0 0 3px #78a99a25}
+.region-filter-help{font-size:10px;line-height:1.7;color:#84918c;max-width:820px;margin:0 0 19px}
+.support-access-badge{align-self:flex-start;display:inline-flex;align-items:center;border-radius:30px;padding:6px 9px;margin:-2px 0 10px;font-size:8px;font-weight:700;letter-spacing:.25px}
+.support-access-badge.regional{background:#edf5f0;color:#3e7968}
+.support-access-badge.national{background:#f3f3ee;color:#797d68}
