@@ -149,7 +149,7 @@ const copy = {
     toolkitReady: "À découvrir",
     toolkitFacilitator: "RESSOURCE POUR FACILITATEURS",
     toolkitNoItems: "Aucune ressource dans cette catégorie pour le moment.",
-    toolkitBack: "Retour aux ressources liés aux organisations",
+    toolkitBack: "Retour aux ressources pour les organisations",
     tip: "Un petit geste de sécurité",
     tipText: "Activez l’authentification multifacteur pour vos comptes les plus importants. Elle ajoute une protection au-delà de votre mot de passe.",
     supportTitle: "Vous méritez des informations fiables.",
