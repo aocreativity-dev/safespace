@@ -3,11 +3,12 @@ import { createRoot } from "react-dom/client";
 import {
   ArrowRight, ShieldCheck, BookOpen, HeartHandshake, Users, Menu, X, Printer, FileText,
   Search, MessageCircle, LockKeyhole, Smartphone, Globe2, ChevronDown,
-  ExternalLink, PlayCircle, Sparkles, LifeBuoy, CheckCircle2, Leaf
+  ExternalLink, PlayCircle, Sparkles, LifeBuoy, CheckCircle2, Leaf, Phone, Mail, MapPin
 } from "lucide-react";
 import "./styles.css";
 import { learningResources, learningCategories } from "./learning.js";
 import { toolkitResources, toolkitCategories, toolkitCategoryByResource } from "./toolkit.js";
+import { supportResources, supportCategories } from "./support.js";
 
 const copy = {
   en: {
@@ -66,9 +67,33 @@ const copy = {
     tipText: "Turn on multi-factor authentication for your most important accounts. It adds another layer of protection beyond your password.",
     supportTitle: "You deserve information you can trust.",
     supportText: "Safe Space shares educational information and signposts to external services. We are not an emergency service, legal practice or counselling provider.",
-    directoryHeading: "The Senegal support directory is being prepared",
-    directoryNote: "We will publish service details only after checking the organisation, contact information and scope of support.",
+    directoryHeading: "Find support information in Senegal",
+    directoryNote: "Explore official reporting channels and organisations that publish support information. Each listing explains what it is for and what Safe Space has or has not verified.",
     directoryButton: "Explore support information",
+    directoryIntro: "Choose the type of information you need. A listing is not a guarantee of service availability, eligibility or outcome.",
+    directorySearch: "Search by service, topic or organisation",
+    directoryAll: "All resources",
+    directorySourceChecked: "Source checked",
+    directoryCall: "Call",
+    directoryEmail: "Email",
+    directoryWebsite: "Open website",
+    directoryDetails: "Details and sources",
+    directoryLastChecked: "Record checked",
+    directoryCoverage: "Coverage",
+    directoryProvider: "Service or organisation",
+    directoryKind: "Type of resource",
+    directoryLimit: "Important information",
+    directorySources: "Sources used",
+    directoryVerification: "Verification note",
+    directoryNoResults: "No resources match your search. Try another term or category.",
+    directoryEmergencyTitle: "Immediate danger?",
+    directoryEmergencyText: "Safe Space is not an emergency service and cannot send help. For immediate emergencies in Senegal, use the official emergency contacts shown below or go to the nearest appropriate emergency service.",
+    directoryListingCount: "resources",
+    directoryUpdated: "Directory research date",
+    directoryNoPhone: "No telephone number published here because a current number could not be confirmed.",
+    directoryNoEmail: "No email address published here because a current address could not be confirmed.",
+    directoryOpenSource: "Open source",
+    directoryReturn: "Back to directory",
     contactHeading: "Contact details are being prepared",
     contactNote: "This prototype does not yet accept enquiries. Please do not send urgent requests or sensitive personal information.",
     privacyHeading: "Privacy and safety",
@@ -154,9 +179,33 @@ const copy = {
     tipText: "Activez l’authentification multifacteur pour vos comptes les plus importants. Elle ajoute une protection au-delà de votre mot de passe.",
     supportTitle: "Vous méritez des informations fiables.",
     supportText: "Safe Space propose des informations éducatives et oriente vers des services externes. Nous ne sommes ni un service d’urgence, ni un cabinet juridique, ni un service de conseil psychologique.",
-    directoryHeading: "L’annuaire des services au Sénégal est en préparation",
-    directoryNote: "Les coordonnées ne seront publiées qu’après vérification de l’organisation, des contacts et de la nature du soutien proposé.",
+    directoryHeading: "Trouver des informations de soutien au Sénégal",
+    directoryNote: "Consultez les canaux officiels de signalement et les organisations qui publient des informations de soutien. Chaque fiche précise son objectif et ce que Safe Space a ou n’a pas vérifié.",
     directoryButton: "Consulter les informations de soutien",
+    directoryIntro: "Choisissez le type d’information dont vous avez besoin. Une fiche ne garantit ni la disponibilité du service, ni l’éligibilité, ni un résultat.",
+    directorySearch: "Rechercher un service, un thème ou une organisation",
+    directoryAll: "Toutes les ressources",
+    directorySourceChecked: "Source consultée",
+    directoryCall: "Appeler",
+    directoryEmail: "Courriel",
+    directoryWebsite: "Ouvrir le site",
+    directoryDetails: "Détails et sources",
+    directoryLastChecked: "Fiche vérifiée le",
+    directoryCoverage: "Zone de couverture",
+    directoryProvider: "Service ou organisation",
+    directoryKind: "Type de ressource",
+    directoryLimit: "Information importante",
+    directorySources: "Sources utilisées",
+    directoryVerification: "Note de vérification",
+    directoryNoResults: "Aucune ressource ne correspond à votre recherche. Essayez un autre terme ou une autre catégorie.",
+    directoryEmergencyTitle: "Danger immédiat ?",
+    directoryEmergencyText: "Safe Space n’est pas un service d’urgence et ne peut pas envoyer de secours. En cas d’urgence immédiate au Sénégal, utilisez les contacts officiels indiqués ci-dessous ou rendez-vous au service d’urgence approprié le plus proche.",
+    directoryListingCount: "ressources",
+    directoryUpdated: "Date de recherche de l’annuaire",
+    directoryNoPhone: "Aucun numéro de téléphone n’est publié ici car un numéro actuel n’a pas pu être confirmé.",
+    directoryNoEmail: "Aucune adresse électronique n’est publiée ici car une adresse actuelle n’a pas pu être confirmée.",
+    directoryOpenSource: "Ouvrir la source",
+    directoryReturn: "Retour à l’annuaire",
     contactHeading: "Les coordonnées de contact sont en préparation",
     contactNote: "Cette version de démonstration ne reçoit pas encore de demandes. N’envoyez pas d’informations personnelles sensibles ni de demandes urgentes.",
     privacyHeading: "Confidentialité et sécurité",
@@ -205,7 +254,16 @@ function App() {
   const [selectedResource, setSelectedResource] = useState(null);
   const [selectedToolkit, setSelectedToolkit] = useState(null);
   const [toolkitCategory, setToolkitCategory] = useState("all");
+  const [supportQuery, setSupportQuery] = useState("");
+  const [supportCategory, setSupportCategory] = useState("all");
+  const [selectedSupport, setSelectedSupport] = useState(null);
   const t = copy[lang];
+  const supportTerm = supportQuery.trim().toLocaleLowerCase();
+  const visibleSupportResources = supportResources.filter(resource => {
+    const matchesCategory = supportCategory === "all" || resource.category === supportCategory;
+    const fields = [resource.title[lang], resource.provider[lang], resource.description[lang], resource.coverage[lang], resource.kind].join(" ").toLocaleLowerCase();
+    return matchesCategory && (!supportTerm || fields.includes(supportTerm));
+  });
   const visibleToolkitResources = toolkitResources.filter(resource =>
     toolkitCategory === "all" || toolkitCategoryByResource[resource.id] === toolkitCategory
   );
@@ -411,9 +469,51 @@ function App() {
           <Sparkles className="tip-spark"/>
         </section>
 
-        <section className="support-section section-wrap" id="support">
-          <div className="support-copy"><span className="eyebrow">INFORMATION · OPTIONS · CONNECTION</span><h2>{t.supportTitle}</h2><p>{t.supportText}</p><button className="btn btn-primary" onClick={()=>goTo("directory")}><HeartHandshake size={17}/>{t.directoryButton}</button><div className="directory-panel" id="directory"><div><strong>{t.directoryHeading}</strong><p>{t.directoryNote}</p></div><span className="pending-label">IN PREPARATION</span></div></div>
+                <section className="support-section section-wrap" id="support">
+          <div className="support-copy"><span className="eyebrow">INFORMATION · OPTIONS · CONNECTION</span><h2>{t.supportTitle}</h2><p>{t.supportText}</p></div>
           <div className="support-art"><div className="support-circle"><LifeBuoy size={65}/></div><div className="support-dot dot-one"></div><div className="support-dot dot-two"></div><div className="support-dot dot-three"></div></div>
+        </section>
+
+        <section className="support-directory-section section-wrap" id="directory">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">{lang==="fr" ? "SÉNÉGAL · RESSOURCES ET ORIENTATION" : "SENEGAL · RESOURCES AND REFERRAL"}</span>
+              <h2>{t.directoryHeading}</h2>
+              <p>{t.directoryIntro}</p>
+            </div>
+            <div className="library-count"><HeartHandshake size={17}/><span>{visibleSupportResources.length} {t.directoryListingCount}</span></div>
+          </div>
+          <div className="directory-search search-box">
+            <Search size={18}/>
+            <input value={supportQuery} onChange={e=>setSupportQuery(e.target.value)} placeholder={t.directorySearch} aria-label={t.directorySearch}/>
+            {supportQuery && <button onClick={()=>setSupportQuery("")} aria-label={lang==="fr"?"Effacer la recherche":"Clear search"}>×</button>}
+          </div>
+          <div className="directory-filters" role="group" aria-label={t.directoryHeading}>
+            {supportCategories.map(category=><button key={category.id} className={supportCategory===category.id?"filter-pill active":"filter-pill"} onClick={()=>setSupportCategory(category.id)}>{category.id==="all"?t.directoryAll:category.label[lang]}</button>)}
+          </div>
+          {visibleSupportResources.length>0 ? <div className="support-grid">
+            {visibleSupportResources.map(resource=><article className="support-card" key={resource.id}>
+              <div className="support-card-top"><span className="support-kind">{resource.kind}</span><span className="support-status"><CheckCircle2 size={13}/>{t.directorySourceChecked}</span></div>
+              <span className="support-provider">{resource.provider[lang]}</span>
+              <h3>{resource.title[lang]}</h3>
+              <p>{resource.description[lang]}</p>
+              <div className="support-coverage"><MapPin size={14}/>{resource.coverage[lang]}</div>
+              <div className="support-contact-actions">
+                {resource.phone && <a className="support-contact-link" href={"tel:"+resource.phone}><Phone size={14}/>{resource.phone}</a>}
+                {resource.emergencyNumbers?.map(item=><a className="support-contact-link emergency-link" href={"tel:"+item.number} key={item.number}><Phone size={14}/>{item.label[lang]} {item.number}</a>)}
+                {resource.email && <a className="support-contact-link" href={"mailto:"+resource.email}><Mail size={14}/>{t.directoryEmail}</a>}
+              </div>
+              <div className="support-card-footer">
+                <a className="btn btn-secondary support-open-link" href={resource.url} target="_blank" rel="noreferrer">{resource.contactLabel[lang]}<ExternalLink size={14}/></a>
+                <button className="support-details-button" onClick={()=>setSelectedSupport(resource)}>{t.directoryDetails}<ArrowRight size={14}/></button>
+              </div>
+            </article>)}
+          </div> : <div className="no-results"><Search size={22}/><p>{t.directoryNoResults}</p></div>}
+          <div className="directory-emergency-note">
+            <div className="directory-emergency-icon"><LifeBuoy size={21}/></div>
+            <div><strong>{t.directoryEmergencyTitle}</strong><p>{t.directoryEmergencyText}</p></div>
+          </div>
+          <p className="directory-maintenance-note">{t.directoryUpdated}: 8 November 2026. Contact details and service availability should be reconfirmed before relying on them. Safe Space has not test-called the listed numbers or submitted reports through the portals.</p>
         </section>
 
         <section className="about-section" id="about"><div className="section-wrap about-inner"><div><span className="eyebrow">WHY SAFE SPACE</span><h2>A little more knowledge. A little more confidence.</h2></div><p>{t.aboutText}</p></div></section>
@@ -423,6 +523,36 @@ function App() {
 
       <footer className="footer"><div className="section-wrap footer-main"><div className="footer-brand"><a className="brand brand-light" href="#home"><span className="brand-mark"><ShieldCheck/></span><span><strong>Safe Space</strong><small>BY AOCREATIVITY</small></span></a><p>{t.footer}</p></div><div className="footer-links"><button onClick={()=>goTo("learn")}>{t.nav[1]}</button><button onClick={()=>goTo("support")}>{t.nav[3]}</button><button onClick={()=>goTo("privacy")}>{t.privacy}</button><button onClick={()=>goTo("contact")}>{t.contact}</button></div></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Safe Space · Prototype</span><span>{t.footerNote}</span></div></footer>
 
+      {selectedSupport && <div className="support-detail-backdrop" onClick={()=>setSelectedSupport(null)}>
+        <article className="support-detail-modal" role="dialog" aria-modal="true" aria-label={selectedSupport.title[lang]} onClick={e=>e.stopPropagation()}>
+          <header className="support-detail-header">
+            <div className="support-detail-icon"><HeartHandshake size={22}/></div>
+            <div className="support-detail-heading">
+              <span className="eyebrow">{selectedSupport.kind}</span>
+              <h2>{selectedSupport.title[lang]}</h2>
+              <span className="support-provider">{selectedSupport.provider[lang]}</span>
+            </div>
+            <button className="article-close" onClick={()=>setSelectedSupport(null)} aria-label={t.toolkitClose}><X/></button>
+          </header>
+          <div className="support-detail-body">
+            <p className="article-intro">{selectedSupport.description[lang]}</p>
+            <div className="support-detail-facts">
+              <div><span>{t.directoryCoverage}</span><strong>{selectedSupport.coverage[lang]}</strong></div>
+              <div><span>{t.directoryLastChecked}</span><strong>{selectedSupport.checked}</strong></div>
+            </div>
+            <section className="support-detail-block"><h3>{t.directoryLimit}</h3><p>{selectedSupport.note[lang]}</p></section>
+            <section className="support-detail-block"><h3>{t.directoryVerification}</h3><p>{selectedSupport.checkStatus[lang]}</p></section>
+            <section className="support-detail-block"><h3>{t.directorySources}</h3>
+              <ul>{selectedSupport.sources.map((source,index)=><li key={index}><a href={source.url} target="_blank" rel="noreferrer">{source.label}<ExternalLink size={13}/></a></li>)}</ul>
+            </section>
+            <div className="support-detail-actions">
+              <a className="btn btn-primary" href={selectedSupport.url} target="_blank" rel="noreferrer">{selectedSupport.contactLabel[lang]}<ExternalLink size={15}/></a>
+              <button className="btn btn-secondary" onClick={()=>setSelectedSupport(null)}>{t.directoryReturn}</button>
+            </div>
+            <p className="article-disclaimer">{t.directoryNote}</p>
+          </div>
+        </article>
+      </div>}
       {selectedToolkit && <div className="toolkit-backdrop" onClick={()=>setSelectedToolkit(null)}>
         <article className="toolkit-modal" role="dialog" aria-modal="true" aria-label={selectedToolkit.title[lang]} onClick={e=>e.stopPropagation()}>
           <header className="toolkit-modal-header">
