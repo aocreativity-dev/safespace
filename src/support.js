@@ -18,6 +18,9 @@ export const supportResources = [
     phone: null,
     email: null,
     coverage: { en: "National · online", fr: "National · en ligne" },
+    accessMode: "national-online",
+    regions: [],
+    locationNote: { en: "Online reporting route intended for use nationally. No regional physical office address is listed in this record.", fr: "Canal de signalement en ligne destiné à un usage national. Aucune adresse de bureau régional n’est indiquée dans cette fiche." },
     note: {
       en: "An initial online report is not necessarily the same as a formal complaint. Follow the platform's current instructions and confirm any next steps with the Police. Safe Space does not submit reports on your behalf.",
       fr: "Un premier signalement en ligne n’équivaut pas nécessairement au dépôt d’une plainte formelle. Suivez les instructions actuelles de la plateforme et confirmez les étapes suivantes auprès de la Police. Safe Space n’effectue aucun signalement à votre place."
@@ -47,6 +50,9 @@ export const supportResources = [
     phone: "+221338808347",
     email: "contact.dcssi@stcc-ssi.sn",
     coverage: { en: "National · online and institutional contact", fr: "National · en ligne et contact institutionnel" },
+    accessMode: "national-online",
+    regions: [],
+    locationNote: { en: "National online incident-reporting portal. The institutional contact is listed separately; this record does not identify a walk-in regional office.", fr: "Portail national en ligne de signalement des incidents. Le contact institutionnel est indiqué séparément ; cette fiche ne confirme pas de bureau régional accueillant le public." },
     note: {
       en: "This is a cybersecurity incident route, not a substitute for reporting an alleged crime to the Police. Do not send passwords or sensitive evidence by ordinary email. Portal operation has not been independently tested by Safe Space.",
       fr: "Il s’agit d’un canal pour les incidents de cybersécurité, et non d’un substitut au signalement d’une infraction présumée auprès de la Police. N’envoyez pas de mots de passe ni de preuves sensibles par courrier électronique ordinaire. Le fonctionnement du portail n’a pas été testé de manière indépendante par Safe Space."
@@ -77,6 +83,9 @@ export const supportResources = [
     phone: "+221338597030",
     email: "contact.cdp@cdp.sn",
     coverage: { en: "National · Dakar office and online information", fr: "National · bureau à Dakar et informations en ligne" },
+    accessMode: "national-online",
+    regions: ["dakar"],
+    locationNote: { en: "The CDP publishes a physical office address in Dakar and provides information and a complaint pathway online. The Dakar office address is confirmed; this record does not imply a local office in other regions.", fr: "La CDP publie une adresse de bureau à Dakar et propose des informations ainsi qu’une procédure de plainte en ligne. L’adresse du bureau de Dakar est confirmée ; cette fiche ne signifie pas qu’il existe un bureau local dans les autres régions." },
     note: {
       en: "The CDP handles personal-data protection matters. It is not an emergency service and does not replace Police reporting for threats or other suspected crimes. Check current procedures on the CDP website.",
       fr: "La CDP traite les questions relatives à la protection des données personnelles. Ce n’est pas un service d’urgence et elle ne remplace pas un signalement à la Police en cas de menaces ou d’autres infractions présumées. Consultez les procédures actuelles sur son site."
@@ -107,6 +116,9 @@ export const supportResources = [
     phone: "116",
     email: null,
     coverage: { en: "Senegal · children and parents", fr: "Sénégal · enfants et parents" },
+    accessMode: "national-phone",
+    regions: [],
+    locationNote: { en: "Telephone helpline entry point: 116. Child Helpline International also lists in-person counselling, but Safe Space has not confirmed a current public-facing address or regional office locations.", fr: "Point d’entrée téléphonique : 116. Child Helpline International mentionne également un accompagnement en présentiel, mais Safe Space n’a pas confirmé d’adresse d’accueil actuelle ni de bureaux régionaux." },
     note: {
       en: "The published operating-hours information is not consistent across the sources reviewed, and Safe Space has not test-called the number. Confirm availability when calling. If a child is in immediate danger, contact local emergency services or go to the nearest Police, Gendarmerie or health service.",
       fr: "Les informations publiées sur les horaires ne sont pas cohérentes entre les sources consultées et Safe Space n’a pas testé le numéro. Vérifiez la disponibilité lors de l’appel. Si un enfant est en danger immédiat, contactez les services d’urgence locaux ou rendez-vous au service de Police, de Gendarmerie ou de santé le plus proche."
@@ -136,7 +148,10 @@ export const supportResources = [
     url: "https://femmesjuristes.org/",
     phone: null,
     email: null,
-    coverage: { en: "Several regions of Senegal; current locations and availability must be confirmed", fr: "Plusieurs régions du Sénégal ; lieux et disponibilité actuels à confirmer" },
+    coverage: { en: "Dakar, Thiès, Louga, Ziguinchor, Sédhiou, Kolda and Kédougou · presence reported", fr: "Dakar, Thiès, Louga, Ziguinchor, Sédhiou, Kolda et Kédougou · présence signalée" },
+    accessMode: "regional-presence-reported",
+    regions: ["dakar","thies","louga","ziguinchor","sedhiou","kolda","kedougou"],
+    locationNote: { en: "The Senegalese Press Agency reported AJS service presence in these seven regions on 24 October 2026. Exact active Boutique de droit addresses, opening hours and current availability must be confirmed directly with AJS before travelling.", fr: "L’Agence de presse sénégalaise a signalé la présence de services de l’AJS dans ces sept régions le 24 octobre 2026. Les adresses exactes des Boutiques de droit actives, les horaires et la disponibilité actuelle doivent être confirmés directement auprès de l’AJS avant tout déplacement." },
     note: {
       en: "Contact AJS through its official website to confirm the nearest active Boutique de droit, opening hours, eligibility and available assistance. Older publications contain contact numbers that have not been confirmed as current, so they are not reproduced here.",
       fr: "Contactez l’AJS via son site officiel pour confirmer la Boutique de droit active la plus proche, les horaires, les conditions d’accès et l’assistance disponible. Des publications anciennes contiennent des numéros qui n’ont pas été confirmés comme actuels ; ils ne sont donc pas reproduits ici."
@@ -169,6 +184,9 @@ export const supportResources = [
     emergencyNumbers: [{ label: { en: "Police", fr: "Police" }, number: "17" }, { label: { en: "Fire & rescue", fr: "Sapeurs-pompiers" }, number: "18" }],
     email: null,
     coverage: { en: "National · emergencies", fr: "National · urgences" },
+    accessMode: "national-phone",
+    regions: [],
+    locationNote: { en: "National emergency telephone numbers published by the Ministry of the Interior. They are not local office addresses.", fr: "Numéros téléphoniques nationaux d’urgence publiés par le Ministère de l’Intérieur. Il ne s’agit pas d’adresses de bureaux locaux." },
     note: {
       en: "Use these numbers for immediate emergencies. Safe Space cannot contact emergency services or monitor a visitor's safety.",
       fr: "Utilisez ces numéros en cas d’urgence immédiate. Safe Space ne peut pas contacter les services d’urgence ni surveiller la sécurité d’un visiteur."
