@@ -261,7 +261,7 @@ function App() {
   const supportTerm = supportQuery.trim().toLocaleLowerCase();
   const visibleSupportResources = supportResources.filter(resource => {
     const matchesCategory = supportCategory === "all" || resource.category === supportCategory;
-    const fields = [resource.title[lang], resource.provider[lang], resource.description[lang], resource.coverage[lang], resource.kind].join(" ").toLocaleLowerCase();
+    const fields = [resource.title[lang], resource.provider[lang], resource.description[lang], resource.coverage[lang], resource.kind[lang]].join(" ").toLocaleLowerCase();
     return matchesCategory && (!supportTerm || fields.includes(supportTerm));
   });
   const visibleToolkitResources = toolkitResources.filter(resource =>
@@ -493,7 +493,7 @@ function App() {
           </div>
           {visibleSupportResources.length>0 ? <div className="support-grid">
             {visibleSupportResources.map(resource=><article className="support-card" key={resource.id}>
-              <div className="support-card-top"><span className="support-kind">{resource.kind}</span><span className="support-status"><CheckCircle2 size={13}/>{t.directorySourceChecked}</span></div>
+              <div className="support-card-top"><span className="support-kind">{resource.kind[lang]}</span><span className="support-status"><CheckCircle2 size={13}/>{t.directorySourceChecked}</span></div>
               <span className="support-provider">{resource.provider[lang]}</span>
               <h3>{resource.title[lang]}</h3>
               <p>{resource.description[lang]}</p>
@@ -528,7 +528,7 @@ function App() {
           <header className="support-detail-header">
             <div className="support-detail-icon"><HeartHandshake size={22}/></div>
             <div className="support-detail-heading">
-              <span className="eyebrow">{selectedSupport.kind}</span>
+              <span className="eyebrow">{selectedSupport.kind[lang]}</span>
               <h2>{selectedSupport.title[lang]}</h2>
               <span className="support-provider">{selectedSupport.provider[lang]}</span>
             </div>
