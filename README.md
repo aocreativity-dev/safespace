@@ -16,29 +16,34 @@ This repository contains an early responsive React/Vite website prototype with:
 - English/French interface toggle
 - Learning topics and resource placeholders
 - Motion design with reduced-motion support
-- Support directory placeholder, clearly marked as in preparation
+- Bilingual, searchable Senegal support directory, with source notes, contact links and 14 administrative-region filters
 - Bilingual organisation resource centre with four printable resources:
   - 75-minute digital-safety workshop session plan
   - Respectful discussion guide using fictional scenarios
   - Safer session preparation checklist
   - Responsible digital-safety campaign review checklist
 - Resource reader with browser print / Save as PDF
-- Senegal support directory with searchable categories, all 14 administrative-region filters and source notes:
-  - Region filtering shows national phone/online services for each region and adds regionally reported service presence where the source identifies it.
-  - The AJS regional presence listing is based on an APS report dated 24 October 2026: Dakar, Thiès, Louga, Ziguinchor, Sédhiou, Kolda and Kédougou. Exact active office addresses and opening hours must be confirmed directly.
-  - ANSD's 14-region structure is used for the region selector.
-  - Police cybercrime reporting platform
-  - DCSSI Jokkocyber cybersecurity incident portal
+- Senegal support directory with 12 resource listings, searchable categories, all 14 administrative-region filters and source notes:
+  - Police cybercrime reporting portal and DCSSI Jokkocyber cybersecurity incident portal
   - Commission de Protection des Données Personnelles
-  - Centre GINDDI Allo 116 child helpline information
+  - Centre GINDDI Allo 116 child-helpline information
   - Association des Juristes Sénégalaises legal-information pathway
-  - Official Police and Fire & Rescue emergency numbers
+  - KAYAM women's violence support and Petit Mbao shelter information
+  - EDEN listening, psychosocial support and referral office in Guédiawaye; EDEN reports project intervention in eight regions, which is not presented as eight local offices
+  - Safe Open Space active-listening and psychosocial referral platform
+  - Ministry of Health Mental Health Division information contact
+  - AfricTivistes Taxaw Temm online-safety resource and WhatsApp contact
+  - JONCTION digital-rights education and advocacy
+  - Police 17, Fire & Rescue 18 and SAMU medical emergency 1515
+  - AJS regional presence listing is based on an APS report dated 24 October 2026: Dakar, Thiès, Louga, Ziguinchor, Sédhiou, Kolda and Kédougou. Exact active office addresses and opening hours must be confirmed directly.
+  - Region filtering distinguishes national phone/online access from a reported physical or programme presence; a programme footprint is not treated as a walk-in office.
+  - ANSD's 14-region structure is used for the region selector.
 - Privacy and contact information placeholders
 - Chatbot interface marked as not connected
 - Safety disclaimer and quick-exit control
 
 ## Important safety status
-This is a prototype, not a live support service. The support directory is not yet populated with verified services. Do not enter personal or sensitive information. The chatbot is not connected to an AI provider and cannot provide crisis response.
+This is an educational prototype, not a live support service. Directory entries are based on organisation or government information reviewed on 8 November 2026. A published phone number or website has not necessarily been tested by Safe Space; current intake, response times, capacity, fees and local availability must be confirmed with the provider. A regional project footprint does not mean a local office exists in every listed region. Do not enter personal or sensitive information. The chatbot is not connected to an AI provider and cannot provide crisis response.
 
 The quick-exit control navigates away but cannot erase browser history, downloads, network records or protect a monitored device.
 
