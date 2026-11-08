@@ -161,7 +161,8 @@ export const supportResources = [
     sources: [
       { label: "AJS official website", url: "https://femmesjuristes.org/" },
       { label: "AJS study on gender-based violence during COVID-19 (organisation publication)", url: "https://femmesjuristes.org/wp-content/uploads/2021/01/Rapport_etude-des-VBG-en-cette-pe%CC%81riode-de-COVID-AJS_VERSION-FINALE_NOVEMBRE1.pdf" },
-      { label: "Penser l’Enfance au Sénégal · AJS", url: "https://www.penserlenfance.sn/ressources/institutions-et-orientation/institution-ajs" }
+      { label: "Penser l’Enfance au Sénégal · AJS", url: "https://www.penserlenfance.sn/ressources/institutions-et-orientation/institution-ajs" },
+      { label: "APS · AJS reports presence in seven regions and plans wider expansion · 24 October 2026", url: "https://aps.sn/lajs-veut-etendre-son-offre-de-services-a-tous-les-departements/" }
     ]
   },
   {
@@ -207,4 +208,23 @@ export const supportCategories = [
   { id: "child", label: { en: "Child protection", fr: "Protection de l’enfance" } },
   { id: "legal", label: { en: "Legal information", fr: "Information juridique" } },
   { id: "emergency", label: { en: "Emergency", fr: "Urgence" } }
+];
+
+
+/** Senegal's 14 administrative regions. Region-level physical presence is shown only where a source reports it. */
+export const senegalRegions = [
+  { id: "dakar", label: { en: "Dakar", fr: "Dakar" } },
+  { id: "diourbel", label: { en: "Diourbel", fr: "Diourbel" } },
+  { id: "fatick", label: { en: "Fatick", fr: "Fatick" } },
+  { id: "kaffrine", label: { en: "Kaffrine", fr: "Kaffrine" } },
+  { id: "kaolack", label: { en: "Kaolack", fr: "Kaolack" } },
+  { id: "kedougou", label: { en: "Kédougou", fr: "Kédougou" } },
+  { id: "kolda", label: { en: "Kolda", fr: "Kolda" } },
+  { id: "louga", label: { en: "Louga", fr: "Louga" } },
+  { id: "matam", label: { en: "Matam", fr: "Matam" } },
+  { id: "saint-louis", label: { en: "Saint-Louis", fr: "Saint-Louis" } },
+  { id: "sedhiou", label: { en: "Sédhiou", fr: "Sédhiou" } },
+  { id: "tambacounda", label: { en: "Tambacounda", fr: "Tambacounda" } },
+  { id: "thies", label: { en: "Thiès", fr: "Thiès" } },
+  { id: "ziguinchor", label: { en: "Ziguinchor", fr: "Ziguinchor" } }
 ];
