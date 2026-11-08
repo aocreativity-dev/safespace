@@ -76,11 +76,12 @@ const copy = {
     directoryAllRegions: "All Senegal",
     directoryNationalAccess: "National phone and online services",
     directoryRegionHelp: "A regional selection shows national phone/online services plus listings with a reported presence in that region. Confirm exact office details before travelling.",
+    directoryRegionSource: "See ANSD regional structure",
     directoryRegionalPresence: "Regional presence reported",
     directoryNationalBadge: "National phone / online access",
     directoryLocationDetails: "Location and access",
     directoryAll: "All resources",
-    directorySourceChecked: "Source checked",
+    directorySourceChecked: "Source reviewed",
     directoryCall: "Call",
     directoryEmail: "Email",
     directoryWebsite: "Open website",
@@ -195,6 +196,7 @@ const copy = {
     directoryAllRegions: "Tout le Sénégal",
     directoryNationalAccess: "Services nationaux par téléphone et en ligne",
     directoryRegionHelp: "Le choix d’une région affiche les services nationaux par téléphone/en ligne ainsi que les services dont une présence dans cette région a été signalée. Confirmez l’adresse exacte avant de vous déplacer.",
+    directoryRegionSource: "Voir le découpage régional de l’ANSD",
     directoryRegionalPresence: "Présence régionale signalée",
     directoryNationalBadge: "Accès national par téléphone / en ligne",
     directoryLocationDetails: "Localisation et accès",
@@ -515,7 +517,7 @@ function App() {
               {senegalRegions.map(region=><option key={region.id} value={region.id}>{region.label[lang]}</option>)}
             </select>
           </div>
-          <p className="region-filter-help">{t.directoryRegionHelp}</p>
+          <p className="region-filter-help">{t.directoryRegionHelp} <a href="https://pigor-dev.ansd.sn/regions" target="_blank" rel="noreferrer">{t.directoryRegionSource}<ExternalLink size={12}/></a></p>
           <div className="directory-filters" role="group" aria-label={t.directoryHeading}>
             {supportCategories.map(category=><button key={category.id} className={supportCategory===category.id?"filter-pill active":"filter-pill"} onClick={()=>setSupportCategory(category.id)}>{category.id==="all"?t.directoryAll:category.label[lang]}</button>)}
           </div>
