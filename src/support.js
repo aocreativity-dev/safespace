@@ -3,7 +3,7 @@ export const supportResources = [
     id: "police-cyber-report",
     category: "cybercrime",
     audience: ["individuals"],
-    kind: "Official reporting channel",
+    kind: { en: "Official reporting channel", fr: "Canal officiel de signalement" },
     title: {
       en: "National Police cybercrime reporting platform",
       fr: "Plateforme de signalement des infractions cybercriminelles de la Police nationale"
@@ -32,7 +32,7 @@ export const supportResources = [
     id: "dcssi-jokkocyber",
     category: "cyberincident",
     audience: ["individuals", "organisations"],
-    kind: "Official cybersecurity incident channel",
+    kind: { en: "Official cybersecurity incident channel", fr: "Canal officiel de signalement des incidents de cybersécurité" },
     title: {
       en: "Jokkocyber · National cybersecurity incident portal",
       fr: "Jokkocyber · Guichet national de signalement des incidents de cybersécurité"
@@ -62,7 +62,7 @@ export const supportResources = [
     id: "cdp-data-protection",
     category: "privacy",
     audience: ["individuals", "organisations"],
-    kind: "Data protection regulator",
+    kind: { en: "Data protection regulator", fr: "Autorité de protection des données" },
     title: {
       en: "Commission de Protection des Données Personnelles (CDP)",
       fr: "Commission de Protection des Données Personnelles (CDP)"
@@ -92,7 +92,7 @@ export const supportResources = [
     id: "ginddi-116",
     category: "child",
     audience: ["individuals"],
-    kind: "Child protection listening and information",
+    kind: { en: "Child protection listening and information", fr: "Écoute et information pour la protection de l’enfance" },
     title: {
       en: "Centre GINDDI · Allo 116",
       fr: "Centre GINDDI · Allo 116"
@@ -122,7 +122,7 @@ export const supportResources = [
     id: "ajs-legal",
     category: "legal",
     audience: ["individuals", "organisations"],
-    kind: "Legal information and orientation",
+    kind: { en: "Legal information and orientation", fr: "Information et orientation juridiques" },
     title: {
       en: "Association des Juristes Sénégalaises (AJS) · Boutiques de droit",
       fr: "Association des Juristes Sénégalaises (AJS) · Boutiques de droit"
@@ -153,7 +153,7 @@ export const supportResources = [
     id: "emergency-services",
     category: "emergency",
     audience: ["individuals"],
-    kind: "Official emergency contacts",
+    kind: { en: "Official emergency contacts", fr: "Contacts officiels d’urgence" },
     title: {
       en: "Police and Fire & Rescue emergency services",
       fr: "Services d’urgence de la Police et des Sapeurs-pompiers"
