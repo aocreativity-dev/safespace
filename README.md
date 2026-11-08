@@ -23,6 +23,13 @@ This repository contains an early responsive React/Vite website prototype with:
   - Safer session preparation checklist
   - Responsible digital-safety campaign review checklist
 - Resource reader with browser print / Save as PDF
+- Senegal support directory with searchable categories and source notes:
+  - Police cybercrime reporting platform
+  - DCSSI Jokkocyber cybersecurity incident portal
+  - Commission de Protection des Données Personnelles
+  - Centre GINDDI Allo 116 child helpline information
+  - Association des Juristes Sénégalaises legal-information pathway
+  - Official Police and Fire & Rescue emergency numbers
 - Privacy and contact information placeholders
 - Chatbot interface marked as not connected
 - Safety disclaimer and quick-exit control
@@ -57,7 +64,7 @@ The included `netlify.toml` supplies these settings.
 ## Before public launch
 - Confirm brand and domain clearance.
 - Add only reviewed educational content.
-- Verify every support organisation, official URL and contact detail.
+- Reconfirm every support organisation, official URL, telephone number and service availability before relying on it; current records distinguish published source details from contacts tested directly.
 - Obtain appropriate safeguarding, privacy and legal review.
 - Review English and French content with human reviewers.
 - Test accessibility, security, mobile performance and all links.
