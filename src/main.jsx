@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
-  ArrowRight, ShieldCheck, BookOpen, HeartHandshake, Users, Menu, X,
+  ArrowRight, ShieldCheck, BookOpen, HeartHandshake, Users, Menu, X, Printer, FileText,
   Search, MessageCircle, LockKeyhole, Smartphone, Globe2, ChevronDown,
   ExternalLink, PlayCircle, Sparkles, LifeBuoy, CheckCircle2, Leaf
 } from "lucide-react";
 import "./styles.css";
 import { learningResources, learningCategories } from "./learning.js";
+import { toolkitResources, toolkitCategories, toolkitCategoryByResource } from "./toolkit.js";
 
 const copy = {
   en: {
@@ -47,6 +48,20 @@ const copy = {
     organisationsTitle: "Helping communities build safer digital spaces",
     organisationsText: "Practical materials for NGOs, educators and community facilitators: workshop plans, discussion guides and awareness resources.",
     toolkit: "Explore organisation resources",
+    toolkitLabel: "TOOLS FOR COMMUNITY LEARNING",
+    toolkitHeading: "Resources for people who help others learn",
+    toolkitIntro: "Practical, adaptable materials for NGOs, educators and community facilitators working to build safer digital spaces.",
+    toolkitSearchLabel: "Explore the resource collection",
+    toolkitItemsCount: "resources",
+    toolkitOpen: "Open resource",
+    toolkitPrint: "Print / Save as PDF",
+    toolkitClose: "Close resource",
+    toolkitReading: "Preparation time",
+    toolkitNote: "Adapt each resource to your audience, organisational safeguarding procedures and local context. These materials are educational tools, not legal, clinical or emergency-response protocols.",
+    toolkitReady: "Ready to explore",
+    toolkitFacilitator: "FACILITATOR RESOURCE",
+    toolkitNoItems: "No resources in this category yet.",
+    toolkitBack: "Back to resources",
     tip: "A small safety step",
     tipText: "Turn on multi-factor authentication for your most important accounts. It adds another layer of protection beyond your password.",
     supportTitle: "You deserve information you can trust.",
@@ -121,6 +136,20 @@ const copy = {
     organisationsTitle: "Aider les communautés à créer des espaces numériques plus sûrs",
     organisationsText: "Des outils pratiques pour les ONG, les éducateurs et les facilitateurs communautaires.",
     toolkit: "Explorer les ressources pour organisations",
+    toolkitLabel: "OUTILS POUR L’APPRENTISSAGE COMMUNAUTAIRE",
+    toolkitHeading: "Des ressources pour accompagner l’apprentissage",
+    toolkitIntro: "Des supports pratiques et adaptables pour les ONG, les éducateurs et les facilitateurs communautaires qui souhaitent promouvoir des espaces numériques plus sûrs.",
+    toolkitSearchLabel: "Explorer la collection de ressources",
+    toolkitItemsCount: "ressources",
+    toolkitOpen: "Ouvrir la ressource",
+    toolkitPrint: "Imprimer / Enregistrer en PDF",
+    toolkitClose: "Fermer la ressource",
+    toolkitReading: "Temps de préparation",
+    toolkitNote: "Adaptez chaque ressource à votre public, aux procédures de protection de votre organisation et au contexte local. Ces supports sont des outils pédagogiques, et non des protocoles juridiques, cliniques ou d’intervention d’urgence.",
+    toolkitReady: "À découvrir",
+    toolkitFacilitator: "RESSOURCE POUR FACILITATEURS",
+    toolkitNoItems: "Aucune ressource dans cette catégorie pour le moment.",
+    toolkitBack: "Retour aux ressources liés aux organisations",
     tip: "Un petit geste de sécurité",
     tipText: "Activez l’authentification multifacteur pour vos comptes les plus importants. Elle ajoute une protection au-delà de votre mot de passe.",
     supportTitle: "Vous méritez des informations fiables.",
@@ -174,7 +203,12 @@ function App() {
   const [searchOpen, setSearchOpen] = useState(true);
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedResource, setSelectedResource] = useState(null);
+  const [selectedToolkit, setSelectedToolkit] = useState(null);
+  const [toolkitCategory, setToolkitCategory] = useState("all");
   const t = copy[lang];
+  const visibleToolkitResources = toolkitResources.filter(resource =>
+    toolkitCategory === "all" || toolkitCategoryByResource[resource.id] === toolkitCategory
+  );
   const searchTerm = query.trim().toLocaleLowerCase();
   const filteredResources = learningResources.filter((resource) => {
     const matchesCategory = activeCategory === "all" || resource.category === activeCategory;
@@ -339,12 +373,36 @@ function App() {
           <p className="video-caption-note"><ShieldCheck size={15}/>{t.captionsNote}</p>
         </section>
 
-        <section className="organisation-section" id="organisations">
+                <section className="organisation-section" id="organisations">
           <div className="organisation-inner section-wrap">
             <div className="organisation-icon"><Users size={35}/><span>✦</span></div>
-            <div className="organisation-copy"><span className="eyebrow">FOR NGOs · EDUCATORS · FACILITATORS</span><h2>{t.organisationsTitle}</h2><p>{t.organisationsText}</p></div>
-            <button className="btn btn-light" onClick={()=>goTo("about")}>{t.toolkit}<ArrowRight size={17}/></button>
+            <div className="organisation-copy"><span className="eyebrow">{t.toolkitLabel}</span><h2>{t.organisationsTitle}</h2><p>{t.organisationsText}</p></div>
+            <button className="btn btn-light" onClick={()=>goTo("organisation-resources")}>{t.toolkit}<ArrowRight size={17}/></button>
           </div>
+        </section>
+
+        <section className="organisation-resources section-wrap" id="organisation-resources">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">{t.toolkitLabel}</span>
+              <h2>{t.toolkitHeading}</h2>
+              <p>{t.toolkitIntro}</p>
+            </div>
+            <div className="library-count"><FileText size={17}/><span>{toolkitResources.length} {t.toolkitItemsCount}</span></div>
+          </div>
+          <div className="toolkit-filters" role="group" aria-label={t.toolkitSearchLabel}>
+            {toolkitCategories.map(category => <button key={category.id} className={toolkitCategory===category.id ? "filter-pill active" : "filter-pill"} onClick={()=>setToolkitCategory(category.id)}>{category.label[lang]}</button>)}
+          </div>
+          {visibleToolkitResources.length > 0 ? <div className="toolkit-grid">
+            {visibleToolkitResources.map(resource => <article className="toolkit-card" key={resource.id}>
+              <div className="toolkit-card-top"><span className="toolkit-icon"><FileText size={21}/></span><span className="toolkit-format">{resource.format[lang]}</span></div>
+              <span className="toolkit-kicker">{t.toolkitFacilitator}</span>
+              <h3>{resource.title[lang]}</h3>
+              <p>{resource.summary[lang]}</p>
+              <div className="toolkit-card-footer"><span className="reading-time">{resource.minutes} {lang==="fr" ? "min" : "min"}</span><button className="card-link" onClick={()=>setSelectedToolkit(resource)}>{t.toolkitOpen}<ArrowRight size={16}/></button></div>
+            </article>)}
+          </div> : <div className="no-results"><p>{t.toolkitNoItems}</p></div>}
+          <p className="toolkit-note"><ShieldCheck size={15}/>{t.toolkitNote}</p>
         </section>
 
         <section className="tip-section section-wrap">
@@ -365,6 +423,33 @@ function App() {
 
       <footer className="footer"><div className="section-wrap footer-main"><div className="footer-brand"><a className="brand brand-light" href="#home"><span className="brand-mark"><ShieldCheck/></span><span><strong>Safe Space</strong><small>BY AOCREATIVITY</small></span></a><p>{t.footer}</p></div><div className="footer-links"><button onClick={()=>goTo("learn")}>{t.nav[1]}</button><button onClick={()=>goTo("support")}>{t.nav[3]}</button><button onClick={()=>goTo("privacy")}>{t.privacy}</button><button onClick={()=>goTo("contact")}>{t.contact}</button></div></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Safe Space · Prototype</span><span>{t.footerNote}</span></div></footer>
 
+      {selectedToolkit && <div className="toolkit-backdrop" onClick={()=>setSelectedToolkit(null)}>
+        <article className="toolkit-modal" role="dialog" aria-modal="true" aria-label={selectedToolkit.title[lang]} onClick={e=>e.stopPropagation()}>
+          <header className="toolkit-modal-header">
+            <span className="toolkit-icon"><FileText size={21}/></span>
+            <div className="toolkit-modal-heading">
+              <span className="eyebrow">{selectedToolkit.format[lang]}</span>
+              <h2>{selectedToolkit.title[lang]}</h2>
+              <span className="reading-time">{t.toolkitReading}: {selectedToolkit.minutes} {lang==="fr" ? "min" : "min"}</span>
+            </div>
+            <button className="article-close" onClick={()=>setSelectedToolkit(null)} aria-label={t.toolkitClose}><X/></button>
+          </header>
+          <div className="toolkit-modal-body">
+            <p className="article-intro">{selectedToolkit.intro[lang]}</p>
+            {selectedToolkit.sections.map((section,index)=><section className="toolkit-content-section" key={index}>
+              <h3>{section.heading[lang]}</h3>
+              <p>{section.body[lang]}</p>
+              {section.bullets[lang].length>0 && <ul>{section.bullets[lang].map((bullet,i)=><li key={i}>{bullet}</li>)}</ul>}
+            </section>)}
+            <div className="article-reminder"><ShieldCheck size={19}/><p>{selectedToolkit.caution[lang]}</p></div>
+            <div className="toolkit-modal-actions">
+              <button className="btn btn-primary" onClick={()=>window.print()}><Printer size={16}/>{t.toolkitPrint}</button>
+              <button className="btn btn-secondary" onClick={()=>setSelectedToolkit(null)}>{t.toolkitBack}</button>
+            </div>
+            <p className="article-disclaimer">{t.toolkitNote}</p>
+          </div>
+        </article>
+      </div>}
       {selectedResource && <div className="article-backdrop" onClick={()=>setSelectedResource(null)}>
         <article className="article-modal" role="dialog" aria-modal="true" aria-label={selectedResource.title[lang]} onClick={e=>e.stopPropagation()}>
           <header className="article-modal-header">
